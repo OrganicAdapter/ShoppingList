@@ -1,0 +1,14 @@
+﻿<Application
+    x:Class="ShoppingList.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Injection="using:ShoppingList.Injection"
+    xmlns:local="using:ShoppingList">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <Injection:InjectionManager x:Key="Locator" />
+        </ResourceDictionary>
+    </Application.Resources>
+    
+</Application>

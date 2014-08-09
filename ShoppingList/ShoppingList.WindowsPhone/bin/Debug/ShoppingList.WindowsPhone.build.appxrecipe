@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>GERGO</Machine>
+    <WindowsUser>Gergő</WindowsUser>
+    <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>fb46768c-0b67-4c18-a1f8-2fdd4dc2be4d</PackageIdentityName>
+    <IntermediateOutputPath>d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\bin\Debug\ShoppingList.WindowsPhone.exe">
+      <PackagePath>ShoppingList.WindowsPhone.exe</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\WindowsPhoneApp\v8.1\ExtensionSDKs\BehaviorsXamlSDKManaged\12.0\References\CommonConfiguration\Neutral\Microsoft.Xaml.Interactions.dll">
+      <PackagePath>Microsoft.Xaml.Interactions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\WindowsPhoneApp\v8.1\ExtensionSDKs\BehaviorsXamlSDKManaged\12.0\References\CommonConfiguration\Neutral\Microsoft.Xaml.Interactivity.dll">
+      <PackagePath>Microsoft.Xaml.Interactivity.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="d:\SoftIT\ShoppingList\packages\MvvmLightLibs.4.4.32.1\lib\wpa81\GalaSoft.MvvmLight.dll">
+      <PackagePath>GalaSoft.MvvmLight.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="d:\SoftIT\ShoppingList\packages\MvvmLightLibs.4.4.32.1\lib\wpa81\GalaSoft.MvvmLight.Extras.dll">
+      <PackagePath>GalaSoft.MvvmLight.Extras.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="d:\SoftIT\ShoppingList\packages\MvvmLightLibs.4.4.32.1\lib\wpa81\GalaSoft.MvvmLight.Platform.dll">
+      <PackagePath>GalaSoft.MvvmLight.Platform.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="d:\SoftIT\ShoppingList\packages\MvvmLightLibs.4.4.32.1\lib\wpa81\Microsoft.Practices.ServiceLocation.dll">
+      <PackagePath>Microsoft.Practices.ServiceLocation.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="d:\SoftIT\ShoppingList\ShoppingListLIB\bin\Debug\ShoppingListLIB.dll">
+      <PackagePath>ShoppingListLIB.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="d:\SoftIT\UniversalExtensions\bin\Debug\UniversalExtensions.dll">
+      <PackagePath>UniversalExtensions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="d:\SoftIT\EgyenlitoUniversal\packages\Microsoft.Net.Http.2.2.22\lib\portable-net45+win8+wpa81\System.Net.Http.Extensions.dll">
+      <PackagePath>System.Net.Http.Extensions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="d:\SoftIT\EgyenlitoUniversal\packages\Microsoft.Net.Http.2.2.22\lib\portable-net45+win8+wpa81\System.Net.Http.Primitives.dll">
+      <PackagePath>System.Net.Http.Primitives.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\Assets\Logo.scale-240.png">
+      <PackagePath>Assets\Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\Assets\SmallLogo.scale-240.png">
+      <PackagePath>Assets\SmallLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\Assets\SplashScreen.scale-240.png">
+      <PackagePath>Assets\SplashScreen.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\Assets\Square71x71Logo.scale-240.png">
+      <PackagePath>Assets\Square71x71Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\Assets\StoreLogo.scale-240.png">
+      <PackagePath>Assets\StoreLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\Assets\WideLogo.scale-240.png">
+      <PackagePath>Assets\WideLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\bin\Debug\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\bin\Debug\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\bin\Debug\Products.xbf">
+      <PackagePath>Products.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\bin\Debug\ShoppingList.WindowsPhone.xr.xml">
+      <PackagePath>ShoppingList.WindowsPhone.xr.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

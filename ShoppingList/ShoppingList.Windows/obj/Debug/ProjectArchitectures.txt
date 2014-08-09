@@ -1,0 +1,4 @@
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.Windows\ShoppingList.Windows.csproj;neutral
+d:\SoftIT\ShoppingList\ShoppingListLIB\ShoppingListLIB.csproj;neutral
+d:\SoftIT\UniversalExtensions\UniversalExtensions.csproj;neutral
+d:\SoftIT\UniversalExtensions\UniversalExtensions.csproj;neutral
