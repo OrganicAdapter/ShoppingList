@@ -33,7 +33,7 @@ namespace ShoppingListLIB.ViewModels
         public ObservableCollection<Product> MyProducts
         {
             get { return _myProducts; }
-            set { _myProducts = value; RaisePropertyChanged(); }
+            set { _myProducts = value; RaisePropertyChanged(); RaisePropertyChanged("TotalPrice"); }
         }
 
         private bool _isAdding;
@@ -50,14 +50,32 @@ namespace ShoppingListLIB.ViewModels
             set { _isCreatingProduct = value; RaisePropertyChanged(); }
         }
 
+        public double TotalPrice { 
+            get 
+            {
+                if (MyProducts == null) return 0;
+
+                double sum = 0;
+
+                foreach (var item in MyProducts)
+                {
+                    sum += item.Quantity * item.Price;
+                }
+
+                return sum;
+            } 
+        }
+
 
         public Product NewProduct { get; set; }
 
 
         public RelayCommand Load { get; set; }
         public RelayCommand Add { get; set; }
-        public RelayCommand<Product> AddItem { get; set; }
-        public RelayCommand Hide { get; set; }
+        public RelayCommand<Product> Save { get; set; }
+        public RelayCommand Cancel { get; set; }
+        public RelayCommand<Product> Increase { get; set; }
+        public RelayCommand<Product> Decrease { get; set; }
 
         #endregion //Properties
 
@@ -67,12 +85,14 @@ namespace ShoppingListLIB.ViewModels
         {
             _dataService = dataService;
 
-            NewProduct = new Product(Main.ShopID);
+            NewProduct = new Product(Main.Shop.ShopID);
 
             Load = new RelayCommand(ExecuteLoad);
             Add = new RelayCommand(ExecuteAdd);
-            AddItem = new RelayCommand<Product>(ExecuteAddItem);
-            Hide = new RelayCommand(ExecuteHide);
+            Save = new RelayCommand<Product>(ExecuteSave);
+            Cancel = new RelayCommand(ExecuteCancel);
+            Increase = new RelayCommand<Product>(ExecuteIncrease);
+            Decrease = new RelayCommand<Product>(ExecuteDecrease);
         }
 
         #endregion //Constructor
@@ -81,7 +101,7 @@ namespace ShoppingListLIB.ViewModels
 
         private async void ExecuteLoad()
         {
-            Products = Converter.ListToObservableCollection<Product>(await _dataService.GetProducts(Main.ShopID));
+            Products = Converter.ListToObservableCollection<Product>(await _dataService.GetProducts(Main.Shop.ShopID));
             MyProducts = new ObservableCollection<Product>();
             IsAdding = false;
         }
@@ -94,23 +114,40 @@ namespace ShoppingListLIB.ViewModels
                 IsCreatingProduct = true;
         }
 
-        private void ExecuteAddItem(Product product)
-        {
-            MyProducts.Add(product);
-            Products.Remove(product);
-        }
-
-        private void ExecuteHide()
+        private void ExecuteSave(Product product)
         {
             if (!IsCreatingProduct)
             {
-                IsAdding = false;
+                MyProducts.Add(product);
+                Products.Remove(product);
+
+                RaisePropertyChanged("TotalPrice");
             }
             else
-            { 
+            {
                 Products.Add(NewProduct);
                 IsCreatingProduct = false;
-            }            
+            }
+        }
+
+        private void ExecuteCancel()
+        {
+            if (!IsCreatingProduct)
+                IsAdding = false;
+            else
+                IsCreatingProduct = false;
+        }
+
+        private void ExecuteIncrease(Product product)
+        {
+            product.Quantity++;
+            RaisePropertyChanged("TotalPrice");
+        }
+
+        private void ExecuteDecrease(Product product)
+        {
+            product.Quantity--;
+            RaisePropertyChanged("TotalPrice");
         }
 
         #endregion //Methods

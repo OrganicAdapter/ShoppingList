@@ -44,7 +44,8 @@ namespace ShoppingListLIB.ViewModels
         public RelayCommand Load { get; set; }
         public RelayCommand Add { get; set; }
         public RelayCommand Save { get; set; }
-        public RelayCommand<int> Open { get; set; }
+        public RelayCommand Cancel { get; set; }
+        public RelayCommand<Shop> Open { get; set; }
 
         #endregion //Properties
 
@@ -60,7 +61,8 @@ namespace ShoppingListLIB.ViewModels
             Load = new RelayCommand(ExecuteLoad);
             Add = new RelayCommand(ExecuteAdd);
             Save = new RelayCommand(ExecuteSave);
-            Open = new RelayCommand<int>(ExecuteOpen);
+            Cancel = new RelayCommand(ExecuteCancel);
+            Open = new RelayCommand<Shop>(ExecuteOpen);
         }
 
         #endregion //Constructor
@@ -85,9 +87,14 @@ namespace ShoppingListLIB.ViewModels
             NewShop = new Shop();
         }
 
-        private void ExecuteOpen(int shopId)
+        private void ExecuteCancel()
         {
-            Main.ShopID = shopId;
+            IsAdding = false;
+        }
+
+        private void ExecuteOpen(Shop shop)
+        {
+            Main.Shop = shop;
             _navigationService.Navigate("ShoppingList", "Products");
         }
 

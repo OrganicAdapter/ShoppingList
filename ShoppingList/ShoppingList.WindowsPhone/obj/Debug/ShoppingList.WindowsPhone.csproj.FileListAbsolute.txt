@@ -61,3 +61,11 @@ d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Products
 d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\bin\Debug\Products.xbf
 d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Products.xaml
 d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Products.xbf
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Microsoft.Practices.ServiceLocation\layout.resfiles
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Microsoft.Practices.ServiceLocation\layout.resfiles.intermediate
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Microsoft.Practices.ServiceLocation\Resources.resfiles
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Microsoft.Practices.ServiceLocation\Resources.resfiles.intermediate
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Microsoft.Practices.ServiceLocation\pri.resfiles
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Microsoft.Practices.ServiceLocation\pri.resfiles.intermediate
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Microsoft.Practices.ServiceLocation\priconfig.xml
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Microsoft.Practices.ServiceLocation\priconfig.xml.intermediate

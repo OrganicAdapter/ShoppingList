@@ -7,18 +7,19 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"  xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Background="White"
     DataContext="{Binding Products, Source={StaticResource Locator}}"
     x:Name="Page">
 
     <Page.BottomAppBar>
-        <CommandBar>
-            <AppBarButton Icon="Add" 
-                          Label="Add"
+        <CommandBar Visibility="{Binding IsCreatingProduct, Converter={StaticResource BooleanVisibilityNegationConverter}}">
+            <AppBarButton x:Uid="Add"
+                          Icon="Add" 
                           Command="{Binding Add}" />
-            <AppBarButton Icon="Accept" 
-                          Label="Accept"
-                          Command="{Binding Hide}" />
+            <AppBarButton x:Uid="Accept"
+                          Icon="Accept" 
+                          Command="{Binding Cancel}"
+                          Visibility="{Binding IsAdding, Converter={StaticResource BooleanVisibilityConverter}}" />
         </CommandBar>
     </Page.BottomAppBar>
 
@@ -29,21 +30,46 @@
     </Interactivity:Interaction.Behaviors>
     
     <Grid>
-        <Popup IsOpen="{Binding DataContext.IsAdding, ElementName=Page}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <Popup IsOpen="{Binding DataContext.IsAdding, ElementName=Page}"
+               Grid.Row="0" Grid.RowSpan="3">
             <Grid Width="400" Height="640"
-                  Background="Black">
-                <ListBox ItemsSource="{Binding Products}">
+                  Background="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                
+                <TextBlock x:Uid="NewProduct"
+                           Grid.Row="0"
+                           FontSize="40"
+                           Foreground="{StaticResource PhoneAccentBrush}"
+                           Margin="30, 10, 30, 10" />
+                
+                <ListBox Grid.Row="1"
+                         ItemsSource="{Binding Products}"
+                         IsEnabled="{Binding IsCreatingProduct, Converter={StaticResource BooleanNegationConverter}}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>
                                 <Interactivity:Interaction.Behaviors>
                                     <Core:EventTriggerBehavior EventName="Tapped">
-                                        <Core:InvokeCommandAction Command="{Binding DataContext.AddItem, ElementName=Page}" CommandParameter="{Binding}" />
+                                        <Core:InvokeCommandAction Command="{Binding DataContext.Save, ElementName=Page}" CommandParameter="{Binding}" />
                                     </Core:EventTriggerBehavior>
                                 </Interactivity:Interaction.Behaviors>
-
-                                <TextBlock Grid.Row="0"
-                                           Text="{Binding Name}" />
+    
+                                <Grid Width="300"
+                                      Background="{StaticResource PhoneAccentBrush}">
+                                    <TextBlock Text="{Binding Name}" 
+                                               Foreground="White"
+                                               FontSize="23"
+                                               Margin="10,5,10,5" />
+                                </Grid>
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -52,25 +78,121 @@
         </Popup>
 
         <Popup DataContext="{Binding NewProduct}"
-               IsOpen="{Binding DataContext.IsCreatingProduct, ElementName=Page}">
-            <Grid Width="400" Height="640"
-                  Background="Black">
-                <TextBox Text="{Binding Name, Mode=TwoWay}" /> 
+               IsOpen="{Binding DataContext.IsCreatingProduct, ElementName=Page}"
+               Grid.Row="0" Grid.RowSpan="3">
+            <Grid Width="400"
+                  Background="{StaticResource PhoneAccentBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                
+                <AutoSuggestBox x:Uid="ProductName"
+                                Grid.Row="0" Grid.ColumnSpan="2"
+                                Text="{Binding Name, Mode=TwoWay}"
+                                Margin="10"/>
+                <AutoSuggestBox x:Uid="ProductCategory"
+                                Grid.Row="1" Grid.ColumnSpan="2"
+                                Text="{Binding Category, Mode=TwoWay}"
+                                Margin="10"/>
+                
+                <TextBox PlaceholderText="ProductPrice"
+                         Grid.Row="2" Grid.Column="0"
+                         Text="{Binding Price}"
+                         InputScope="Number"
+                         Margin="10" />
+                <TextBlock x:Uid="Currency"
+                           Grid.Row="2" Grid.Column="1"
+                           Margin="10"
+                           FontSize="30"
+                           VerticalAlignment="Center" />
+                <TextBox x:Uid="ProductQuantity"
+                         Grid.Row="3" Grid.Column="0"
+                         Text="{Binding Quantity}"
+                         InputScope="Number"
+                         Margin="10"/>
+                <TextBox x:Uid="ProductUnit"
+                         Grid.Row="3" Grid.Column="1"
+                         Text="{Binding Unit}"
+                         Margin="10" />
+
+                <Button x:Uid="New" 
+                        Grid.Row="4" Grid.Column="0"
+                        Command="{Binding DataContext.Save, ElementName=Page}"
+                        HorizontalAlignment="Center"
+                        Width="180"/>
+                <Button x:Uid="Cancel"
+                        Grid.Row="4" Grid.Column="1"
+                        Command="{Binding DataContext.Cancel, ElementName=Page}"
+                        HorizontalAlignment="Center"
+                        Width="180" />
             </Grid>
         </Popup>
         
-        <ListBox ItemsSource="{Binding MyProducts}">
+        <TextBlock Grid.Row="0"
+                   Text="{Binding Main.Shop.Name}"
+                   Foreground="{StaticResource PhoneAccentBrush}"
+                   FontSize="40"
+                   Margin="30,10,30,10"/>
+        
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <TextBlock x:Uid="TotalPrice"
+                       Grid.Row="0"
+                       Foreground="{StaticResource PhoneAccentBrush}" />
+            <StackPanel Grid.Row="1" 
+                        Orientation="Horizontal">
+                <TextBlock Text="{Binding TotalPrice}"
+                           Foreground="{StaticResource PhoneAccentBrush}" />
+                <TextBlock x:Uid="Currency"
+                           Foreground="{StaticResource PhoneAccentBrush}" />
+            </StackPanel>
+        </Grid>
+        
+        <ListBox ItemsSource="{Binding MyProducts}"
+                 Grid.Row="2">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <Interactivity:Interaction.Behaviors>
-                            <Core:EventTriggerBehavior EventName="Tapped">
-                                <Core:InvokeCommandAction Command="{Binding DataContext.Open, ElementName=Page}" CommandParameter="{Binding ShopID}" />
-                            </Core:EventTriggerBehavior>
-                        </Interactivity:Interaction.Behaviors>
-
-                        <CheckBox Content="{Binding Name}"
-                                  IsChecked="{Binding IsCompleted}"/>
+                    <Grid Background="{StaticResource PhoneAccentBrush}"
+                          Width="390">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <CheckBox Grid.Column="0"
+                                  Content="{Binding Name}"
+                                  IsChecked="{Binding IsCompleted}"
+                                  Foreground="White"/>
+                        
+                        <TextBlock Grid.Column="1"
+                                   Text="{Binding Quantity}"
+                                   Foreground="White" />
+                        <TextBlock Grid.Column="2"
+                                   Text="{Binding Unit}"
+                                   Foreground="White" />
+                        
+                        <AppBarButton Grid.Column="4" 
+                                      Icon="Add"
+                                      Command="{Binding DataContext.Increase, ElementName=Page}" CommandParameter="{Binding}"/>
+                        <AppBarButton Grid.Column="5" 
+                                      Icon="Remove"
+                                      Command="{Binding DataContext.Decrease, ElementName=Page}" CommandParameter="{Binding}"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

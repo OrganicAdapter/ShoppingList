@@ -1,23 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Roots >
+  <Roots.Interfaces>
+    <RootInterface FullName="Windows.UI.Xaml.Data.IValueConverter" />
+  </Roots.Interfaces>
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="Shops" />
+    <RootPropertyPathName Name="IsAdding" />
     <RootPropertyPathName Name="Add" />
     <RootPropertyPathName Name="Load" />
     <RootPropertyPathName Name="DataContext" />
     <RootPropertyPathName Name="Open" />
-    <RootPropertyPathName Name="ShopID" />
     <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="NewShop" />
-    <RootPropertyPathName Name="IsAdding" />
+    <RootPropertyPathName Name="Cancel" />
     <RootPropertyPathName Name="Save" />
     <RootPropertyPathName Name="Products" />
-    <RootPropertyPathName Name="Hide" />
-    <RootPropertyPathName Name="MyProducts" />
-    <RootPropertyPathName Name="IsCompleted" />
-    <RootPropertyPathName Name="NewProduct" />
     <RootPropertyPathName Name="IsCreatingProduct" />
-    <RootPropertyPathName Name="AddItem" />
+    <RootPropertyPathName Name="MyProducts" />
+    <RootPropertyPathName Name="Decrease" />
+    <RootPropertyPathName Name="Increase" />
+    <RootPropertyPathName Name="Unit" />
+    <RootPropertyPathName Name="Quantity" />
+    <RootPropertyPathName Name="IsCompleted" />
+    <RootPropertyPathName Name="TotalPrice" />
+    <RootPropertyPathName Name="Main" />
+    <RootPropertyPathName Name="Shop" />
+    <RootPropertyPathName Name="NewProduct" />
+    <RootPropertyPathName Name="Price" />
+    <RootPropertyPathName Name="Category" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
@@ -25,6 +35,9 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.ResourceDictionary" />
     <RootType FullName="ShoppingList.Injection.InjectionManager" />
+    <RootType FullName="UniversalExtensions.Converters.BooleanNegationConverter" />
+    <RootType FullName="UniversalExtensions.Converters.BooleanVisibilityNegationConverter" />
+    <RootType FullName="UniversalExtensions.Converters.BooleanVisibilityConverter" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Background" />
       <RootProperty Name="DataContext" />
@@ -35,20 +48,22 @@
       <RootMethod Name="GetBehaviors" />
       <RootMethod Name="SetBehaviors" />
     </RootType>
-    <RootType FullName="Microsoft.Xaml.Tools.DirectUI.ProxyTypes.ThemeResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Data.Binding">
       <RootProperty Name="Source" />
+      <RootProperty Name="Converter" />
       <RootProperty Name="ElementName" />
       <RootProperty Name="Mode" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.Tools.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
+      <RootProperty Name="Visibility" />
       <RootProperty Name="PrimaryCommands" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
       <RootProperty Name="Icon" />
-      <RootProperty Name="Label" />
       <RootProperty Name="Command" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="CommandParameter" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.Interactions.Core.EventTriggerBehavior">
       <RootProperty Name="EventName" />
@@ -60,42 +75,78 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="Children" />
-      <RootProperty Name="Background" />
       <RootProperty Name="Width" />
+      <RootProperty Name="Background" />
       <RootProperty Name="RowDefinitions" />
+      <RootProperty Name="ColumnDefinitions" />
       <RootProperty Name="Height" />
       <RootMethod Name="GetRow" />
       <RootMethod Name="SetRow" />
+      <RootMethod Name="GetColumnSpan" />
+      <RootMethod Name="SetColumnSpan" />
+      <RootMethod Name="GetColumn" />
+      <RootMethod Name="SetColumn" />
+      <RootMethod Name="GetRowSpan" />
+      <RootMethod Name="SetRowSpan" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Primitives.Popup">
       <RootProperty Name="DataContext" />
       <RootProperty Name="IsOpen" />
       <RootProperty Name="Child" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ListBox">
-      <RootProperty Name="ItemsSource" />
-      <RootProperty Name="ItemTemplate" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Pivot">
+      <RootProperty Name="IsEnabled" />
+      <RootProperty Name="HeaderTemplate" />
+      <RootProperty Name="Items" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
       <RootProperty Name="Text" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="VerticalAlignment" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.PivotItem">
+      <RootProperty Name="Content" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ListBox">
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="IsEnabled" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
       <RootProperty Name="Height" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
+      <RootProperty Name="Width" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
       <RootProperty Name="Text" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="PlaceholderText" />
+      <RootProperty Name="InputScope" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
-      <RootProperty Name="Content" />
       <RootProperty Name="Command" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Width" />
     </RootType>
     <RootType FullName="ShoppingList.MainPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.CheckBox">
       <RootProperty Name="Content" />
       <RootProperty Name="IsChecked" />
+      <RootProperty Name="Foreground" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
+      <RootProperty Name="Orientation" />
+      <RootProperty Name="Children" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.AutoSuggestBox">
+      <RootProperty Name="Text" />
+      <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="ShoppingList.Products" />
   </Roots.RootTypes>

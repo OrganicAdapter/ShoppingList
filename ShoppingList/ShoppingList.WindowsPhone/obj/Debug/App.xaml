@@ -3,11 +3,16 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Injection="using:ShoppingList.Injection"
+    xmlns:Converters="using:UniversalExtensions.Converters"
     xmlns:local="using:ShoppingList">
 
     <Application.Resources>
         <ResourceDictionary>
             <Injection:InjectionManager x:Key="Locator" />
+            
+            <Converters:BooleanNegationConverter x:Key="BooleanNegationConverter" />
+            <Converters:BooleanVisibilityNegationConverter x:Key="BooleanVisibilityNegationConverter" />
+            <Converters:BooleanVisibilityConverter x:Key="BooleanVisibilityConverter" />
         </ResourceDictionary>
     </Application.Resources>
     

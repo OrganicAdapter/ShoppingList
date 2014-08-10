@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShoppingListLIB.Models.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,6 @@ namespace ShoppingListLIB.ViewModels
             }
         }
 
-        public int ShopID { get; set; }
+        public Shop Shop { get; set; }
     }
 }

@@ -18,4 +18,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Implementations\TypeService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Injection\InjectionManager.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en-US\Resources.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\hu-HU\Resources.resw" />
+  </ItemGroup>
 </Project>
