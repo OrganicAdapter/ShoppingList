@@ -3,10 +3,10 @@
     <LocalAssembly PathName="d:\softit\shoppinglist\shoppinglist\shoppinglist.windows\obj\debug\intermediatexaml\shoppinglist.windows.exe" HashGuid="1e0f1672-99af-8344-1d1f-9e3e480ada5a" />
     <ReferenceAssembly PathName="c:\program files (x86)\microsoft sdks\windows\v8.1\extensionsdks\behaviorsxamlsdkmanaged\12.0\references\commonconfiguration\neutral\microsoft.xaml.interactions.dll" HashGuid="95a94f94-3917-d473-4f7c-18c4bd437046" />
     <ReferenceAssembly PathName="c:\program files (x86)\microsoft sdks\windows\v8.1\extensionsdks\behaviorsxamlsdkmanaged\12.0\references\commonconfiguration\neutral\microsoft.xaml.interactivity.dll" HashGuid="d25f59e6-dd81-900a-0dfc-55b39f6898ef" />
-    <ReferenceAssembly PathName="d:\softit\shoppinglist\packages\mvvmlightlibs.4.4.32.1\lib\netcore45\galasoft.mvvmlight.dll" HashGuid="0e89fba1-9317-cee7-b759-aaaceabef9d3" />
-    <ReferenceAssembly PathName="d:\softit\shoppinglist\packages\mvvmlightlibs.4.4.32.1\lib\netcore45\galasoft.mvvmlight.extras.dll" HashGuid="28bb2089-c7a4-73bb-7a72-1ea8b02698b0" />
-    <ReferenceAssembly PathName="d:\softit\shoppinglist\packages\commonservicelocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\microsoft.practices.servicelocation.dll" HashGuid="89de7f80-26d8-a17c-5ad9-b855f81ea5b2" />
-    <ReferenceAssembly PathName="d:\softit\shoppinglist\shoppinglistlib\bin\debug\shoppinglistlib.dll" HashGuid="38c6f71a-5af3-e383-b16d-15f8d22660ae" />
-    <ReferenceAssembly PathName="d:\softit\universalextensions\bin\debug\universalextensions.dll" HashGuid="9c4ed594-1ada-8597-69a3-f40f4a1812b7" />
+    <ReferenceAssembly PathName="e:\github\shoppinglist\packages\mvvmlightlibs.4.4.32.1\lib\netcore45\galasoft.mvvmlight.dll" HashGuid="0e89fba1-9317-cee7-b759-aaaceabef9d3" />
+    <ReferenceAssembly PathName="e:\github\shoppinglist\packages\mvvmlightlibs.4.4.32.1\lib\netcore45\galasoft.mvvmlight.extras.dll" HashGuid="28bb2089-c7a4-73bb-7a72-1ea8b02698b0" />
+    <ReferenceAssembly PathName="e:\github\shoppinglist\packages\commonservicelocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\microsoft.practices.servicelocation.dll" HashGuid="89de7f80-26d8-a17c-5ad9-b855f81ea5b2" />
+    <ReferenceAssembly PathName="e:\github\shoppinglist\shoppinglistlib\bin\debug\shoppinglistlib.dll" HashGuid="2647ff15-1a32-25c3-9a88-0521fc22bee4" />
+    <ReferenceAssembly PathName="e:\github\universalextensions\bin\debug\universalextensions.dll" HashGuid="9c4ed594-1ada-8597-69a3-f40f4a1812b7" />
   </ReferenceAssemblyList>
 </XamlCompilerSaveState>

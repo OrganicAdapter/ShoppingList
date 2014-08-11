@@ -11,5 +11,8 @@ namespace ShoppingListLIB.Models.Interfaces
     {
         void StoreProducts(int shopID, List<Product> products, bool isAll);
         Task<List<Product>> LoadProducts(int shopID, bool isAll);
+        void StoreShops(List<Shop> shops);
+        Task<List<Shop>> LoadShops();
+        void RemoveShopItems(int shopID);
     }
 }

@@ -127,7 +127,7 @@
     <value>Cancel</value>
   </data>
   <data name="Currency.Text" xml:space="preserve">
-    <value>Ł</value>
+    <value>$</value>
   </data>
   <data name="New.Content" xml:space="preserve">
     <value>Add</value>
@@ -157,6 +157,6 @@
     <value>Shops</value>
   </data>
   <data name="TotalPrice.Text" xml:space="preserve">
-    <value>Total</value>
+    <value>Total price:</value>
   </data>
 </root>

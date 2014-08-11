@@ -1,7 +1,7 @@
 C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\BehaviorsXamlSDKManaged\12.0\Redist\CommonConfiguration\Neutral\Microsoft.Xaml.Interactions.pri
 C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\BehaviorsXamlSDKManaged\12.0\Redist\CommonConfiguration\Neutral\Microsoft.Xaml.Interactivity.pri
-d:\SoftIT\ShoppingList\packages\MvvmLightLibs.4.4.32.1\lib\netcore45\GalaSoft.MvvmLight.Extras.pri
-d:\SoftIT\ShoppingList\packages\MvvmLightLibs.4.4.32.1\lib\netcore45\GalaSoft.MvvmLight.pri
-d:\SoftIT\ShoppingList\ShoppingListLIB\bin\Debug\ShoppingListLIB.pri
-d:\SoftIT\UniversalExtensions\bin\Debug\UniversalExtensions.pri
-d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.Windows\obj\Debug\Microsoft.Practices.ServiceLocation.pri
+e:\GitHub\ShoppingList\packages\MvvmLightLibs.4.4.32.1\lib\netcore45\GalaSoft.MvvmLight.Extras.pri
+e:\GitHub\ShoppingList\packages\MvvmLightLibs.4.4.32.1\lib\netcore45\GalaSoft.MvvmLight.pri
+e:\GitHub\ShoppingList\ShoppingListLIB\bin\Debug\ShoppingListLIB.pri
+e:\GitHub\UniversalExtensions\bin\Debug\UniversalExtensions.pri
+e:\GitHub\ShoppingList\ShoppingList\ShoppingList.Windows\obj\Debug\Microsoft.Practices.ServiceLocation.pri

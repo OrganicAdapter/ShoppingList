@@ -26,6 +26,10 @@ namespace ShoppingListLIB.ViewModels
 
         #region Properties
 
+        private bool IsEditing { get; set; }
+        private Product EditedProduct { get; set; }
+
+
         private ObservableCollection<Product> _products;
         public ObservableCollection<Product> Products
         {
@@ -84,6 +88,8 @@ namespace ShoppingListLIB.ViewModels
                     sum += item.Quantity * item.Price;
                 }
 
+                RaisePropertyChanged("RemainingPrice");
+
                 return sum;
             } 
         }
@@ -101,6 +107,7 @@ namespace ShoppingListLIB.ViewModels
         public RelayCommand<Product> Save { get; set; }
         public RelayCommand Cancel { get; set; }
         public RelayCommand<Product> Edit { get; set; }
+        public RelayCommand<Product> Delete { get; set; }
         public RelayCommand<Product> Increase { get; set; }
         public RelayCommand<Product> Decrease { get; set; }
 
@@ -119,6 +126,7 @@ namespace ShoppingListLIB.ViewModels
             Add = new RelayCommand(ExecuteAdd);
             Save = new RelayCommand<Product>(ExecuteSave);
             Edit = new RelayCommand<Product>(ExecuteEdit);
+            Delete = new RelayCommand<Product>(ExecuteDelete);
             Cancel = new RelayCommand(ExecuteCancel);
             Increase = new RelayCommand<Product>(ExecuteIncrease);
             Decrease = new RelayCommand<Product>(ExecuteDecrease);
@@ -166,12 +174,14 @@ namespace ShoppingListLIB.ViewModels
             else
             {
                 Products.Add(NewProduct);
+                NewProduct = new Product(Main.Shop.ShopID);
 
                 _storageService.StoreProducts(Main.Shop.ShopID, Products.ToList(), true);
 
                 RaisePropertyChanged("GroupedProducts");
 
                 IsCreatingProduct = false;
+                IsEditing = false;
             }
         }
 
@@ -179,10 +189,39 @@ namespace ShoppingListLIB.ViewModels
         {
             Products.Remove(product);
             NewProduct = product;
+            EditedProduct = product;
 
             IsCreatingProduct = true;
+            IsEditing = true;
 
             RaisePropertyChanged("GroupedProducts");
+        }
+
+        private void ExecuteDelete(Product product)
+        {
+            if (!IsAdding)
+            {
+                MyProducts.Remove(product);
+                Products.Add(product);
+
+                RaisePropertyChanged("MyGroupedProducts");
+                RaisePropertyChanged("GroupedProducts");
+                RaisePropertyChanged("TotalPrice");
+
+                _storageService.StoreProducts(Main.Shop.ShopID, MyProducts.ToList(), false);
+                _storageService.StoreProducts(Main.Shop.ShopID, Products.ToList(), true);
+            }
+            else
+            {
+                Products.Remove(product);
+
+                RaisePropertyChanged("GroupedProducts");
+
+                _storageService.StoreProducts(Main.Shop.ShopID, Products.ToList(), true);
+
+                if (Products.Count == 0)
+                    IsAdding = false;
+            }
         }
 
         private void ExecuteCancel()
@@ -190,7 +229,15 @@ namespace ShoppingListLIB.ViewModels
             if (!IsCreatingProduct)
                 IsAdding = false;
             else
+            {
                 IsCreatingProduct = false;
+
+                if (IsEditing)
+                {
+                    Products.Add(EditedProduct);
+                    RaisePropertyChanged("GroupedProducts");
+                }
+            }
         }
 
         private void ExecuteIncrease(Product product)

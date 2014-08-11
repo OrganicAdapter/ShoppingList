@@ -62,24 +62,31 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
 
                                         <TextBlock Grid.Column="0"
-                                                       Text="{Binding Name}" 
-                                                       Foreground="Black"
-                                                       FontSize="23"
-                                                       Margin="10,5,10,5">
-                                                                                    <Interactivity:Interaction.Behaviors>
-                                            <Core:EventTriggerBehavior EventName="Tapped">
-                                                <Core:InvokeCommandAction Command="{Binding DataContext.Save, ElementName=Page}" CommandParameter="{Binding}" />
-                                            </Core:EventTriggerBehavior>
-                                        </Interactivity:Interaction.Behaviors>
+                                                   Text="{Binding Name}" 
+                                                   Foreground="Black"
+                                                   FontSize="23"
+                                                   Margin="10,5,10,5">
+                                            <Interactivity:Interaction.Behaviors>
+                                                <Core:EventTriggerBehavior EventName="Tapped">
+                                                    <Core:InvokeCommandAction Command="{Binding DataContext.Save, ElementName=Page}" CommandParameter="{Binding}" />
+                                                </Core:EventTriggerBehavior>
+                                            </Interactivity:Interaction.Behaviors>
                                         </TextBlock>
 
                                         <AppBarButton Grid.Column="1"
-                                                          Icon="Edit"
-                                                          Command="{Binding DataContext.Edit, ElementName=Page}" CommandParameter="{Binding}"
-                                                          Foreground="Black" />
+                                                      Icon="Edit"
+                                                      Command="{Binding DataContext.Edit, ElementName=Page}" CommandParameter="{Binding}"
+                                                      Foreground="Black"
+                                                      Margin="-10"/>
+                                        <AppBarButton Grid.Column="2"
+                                                      Icon="Delete"
+                                                      Command="{Binding DataContext.Delete, ElementName=Page}" CommandParameter="{Binding}"
+                                                      Foreground="Black"
+                                                      Margin="-10"/>
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
@@ -169,28 +176,37 @@
                    FontSize="40"
                    Margin="30,10,30,10"/>
 
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+        <Grid Grid.Row="1"
+              Margin="30, 10, 30, 20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
 
-            <TextBlock x:Uid="TotalPrice"
-                       Grid.Row="0"
-                       Foreground="{StaticResource PhoneAccentBrush}" />
-            <StackPanel Grid.Row="1" 
-                        Orientation="Horizontal">
-                <TextBlock Text="{Binding TotalPrice}"
-                           Foreground="{StaticResource PhoneAccentBrush}" />
-                <TextBlock x:Uid="Currency"
-                           Foreground="{StaticResource PhoneAccentBrush}" />
-            </StackPanel>
+            <Viewbox Grid.Column="0"
+                     Height="30"
+                     HorizontalAlignment="Left">
+                <TextBlock x:Uid="TotalPrice"
+                           Foreground="{StaticResource PhoneAccentBrush}"
+                           FontWeight="ExtraBold"/>
+            </Viewbox>
+            <Viewbox Grid.Column="1"
+                     Height="30" Width="100"
+                     HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding TotalPrice}"
+                               Foreground="{StaticResource PhoneAccentBrush}"
+                               Margin="20,0,0,0"/>
+                    <TextBlock x:Uid="Currency"
+                               Foreground="{StaticResource PhoneAccentBrush}"/>
+                </StackPanel>
+            </Viewbox>
         </Grid>
 
         <SemanticZoom Grid.Row="2">
             <SemanticZoom.ZoomedInView>
                 <ListView ItemsSource="{Binding Source={StaticResource MyProductsGrouped}}"
-                                  IsEnabled="{Binding IsCreatingProduct, Converter={StaticResource BooleanNegationConverter}}">
+                          IsEnabled="{Binding IsCreatingProduct, Converter={StaticResource BooleanNegationConverter}}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid Background="White"
@@ -203,27 +219,61 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
 
-                                <CheckBox Grid.Column="0"
-                                  Content="{Binding Name}"
-                                  IsChecked="{Binding IsCompleted}"
-                                  Foreground="Black"/>
+                                <CheckBox Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
+                                          IsChecked="{Binding IsCompleted}"
+                                          Foreground="Black"
+                                          VerticalAlignment="Center"
+                                          Background="Black">
+                                    <CheckBox.Content>
+                                        <Viewbox Width="80" Height="30">
+                                            <TextBlock Text="{Binding Name}" />
+                                        </Viewbox>
+                                    </CheckBox.Content>
+                                </CheckBox>
 
-                                <TextBlock Grid.Column="1"
-                                   Text="{Binding Quantity}"
-                                   Foreground="Black" />
-                                <TextBlock Grid.Column="2"
-                                   Text="{Binding Unit}"
-                                   Foreground="Black" />
+                                <Viewbox Grid.Column="1" Grid.Row="0"
+                                         Height="30" Width="40">
+                                    <TextBlock Text="{Binding Quantity}"
+                                               Foreground="Black" />
+                                </Viewbox>
+                                <Viewbox Grid.Column="2" Grid.Row="0"
+                                         Height="30" Width="20">
+                                    <TextBlock Text="{Binding Unit}"
+                                               Foreground="Black" />
+                                </Viewbox>
 
+                                <Viewbox Grid.Column="1" Grid.Row="1"
+                                         Height="30" Width="40">
+                                    <TextBlock Text="{Binding Price}"
+                                               Foreground="Black" />
+                                </Viewbox>
+                                <Viewbox Grid.Column="2" Grid.Row="1"
+                                         Height="30" Width="20">
+                                    <TextBlock x:Uid="Currency"
+                                               Foreground="Black" />
+                                </Viewbox> 
+                                
                                 <AppBarButton Grid.Column="4" 
-                                      Icon="Add"
-                                      Command="{Binding DataContext.Increase, ElementName=Page}" CommandParameter="{Binding}"
-                                              Foreground="Black"/>
+                                              Icon="Add"
+                                              Command="{Binding DataContext.Increase, ElementName=Page}" CommandParameter="{Binding}"
+                                              Foreground="Black"
+                                              Margin="-10, -10, -10, -20"/>
                                 <AppBarButton Grid.Column="5" 
-                                      Icon="Remove"
-                                      Command="{Binding DataContext.Decrease, ElementName=Page}" CommandParameter="{Binding}"
-                                              Foreground="Black"/>
+                                              Icon="Remove"
+                                              Command="{Binding DataContext.Decrease, ElementName=Page}" CommandParameter="{Binding}"
+                                              Foreground="Black"
+                                              Margin="-10, -10, -10, -20"/>
+                                <AppBarButton Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="1" 
+                                              Icon="Delete"
+                                              Command="{Binding DataContext.Delete, ElementName=Page}" CommandParameter="{Binding}"
+                                              Foreground="Black"
+                                              Margin="-10, -10, -10, -20"
+                                              HorizontalAlignment="Center"/>
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -232,10 +282,10 @@
                             <GroupStyle.HeaderTemplate>
                                 <DataTemplate>
                                     <Grid Background="{StaticResource PhoneAccentBrush}"
-                                                  Width="400" Height="40">
+                                          Width="400" Height="40">
                                         <Viewbox HorizontalAlignment="Left">
                                             <TextBlock Text="{Binding GroupName}"
-                                                               Foreground="White"/>
+                                                       Foreground="White"/>
                                         </Viewbox>
                                     </Grid>
                                 </DataTemplate>

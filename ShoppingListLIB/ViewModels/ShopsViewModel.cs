@@ -19,6 +19,7 @@ namespace ShoppingListLIB.ViewModels
 
         private readonly IDataService _dataService;
         private readonly INavigationService _navigationService;
+        private readonly IStorageService _storageService;
 
         #endregion //Fields
 
@@ -39,11 +40,18 @@ namespace ShoppingListLIB.ViewModels
         }
 
 
-        public Shop NewShop { get; set; }
+        private Shop _newShop;
+        public Shop NewShop
+        {
+            get { return _newShop; }
+            set { _newShop = value; RaisePropertyChanged(); }
+        }
+
 
         public RelayCommand Load { get; set; }
         public RelayCommand Add { get; set; }
         public RelayCommand Save { get; set; }
+        public RelayCommand<Shop> Delete { get; set; }
         public RelayCommand Cancel { get; set; }
         public RelayCommand<Shop> Open { get; set; }
 
@@ -51,16 +59,18 @@ namespace ShoppingListLIB.ViewModels
 
         #region Constructor
 
-        public ShopsViewModel(IDataService dataService, INavigationService navigationService)
+        public ShopsViewModel(IDataService dataService, INavigationService navigationService, IStorageService storageService)
         {
             _dataService = dataService;
             _navigationService = navigationService;
+            _storageService = storageService;
 
             NewShop = new Shop();
 
             Load = new RelayCommand(ExecuteLoad);
             Add = new RelayCommand(ExecuteAdd);
             Save = new RelayCommand(ExecuteSave);
+            Delete = new RelayCommand<Shop>(ExecuteDelete);
             Cancel = new RelayCommand(ExecuteCancel);
             Open = new RelayCommand<Shop>(ExecuteOpen);
         }
@@ -71,7 +81,7 @@ namespace ShoppingListLIB.ViewModels
 
         private async void ExecuteLoad()
         {
-            Shops = Converter.ListToObservableCollection<Shop>(await _dataService.GetShops());
+            Shops = Converter.ListToObservableCollection<Shop>(await _storageService.LoadShops());
             IsAdding = false;
         }
 
@@ -83,13 +93,24 @@ namespace ShoppingListLIB.ViewModels
         private void ExecuteSave()
         {
             IsAdding = false;
+            NewShop.ShopID = Shops.Count;
             Shops.Add(NewShop);
             NewShop = new Shop();
+
+            _storageService.StoreShops(Shops.ToList());
         }
 
         private void ExecuteCancel()
         {
             IsAdding = false;
+        }
+
+        private void ExecuteDelete(Shop shop)
+        {
+            Shops.Remove(shop);
+
+            _storageService.RemoveShopItems(shop.ShopID);
+            _storageService.StoreShops(Shops.ToList());
         }
 
         private void ExecuteOpen(Shop shop)

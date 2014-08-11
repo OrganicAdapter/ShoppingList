@@ -24,8 +24,8 @@
             <Core:InvokeCommandAction Command="{Binding Load}" />
         </Core:EventTriggerBehavior>
     </Interactivity:Interaction.Behaviors>
+    
     <Grid>
-
         <Popup DataContext="{Binding NewShop}"
                IsOpen="{Binding DataContext.IsAdding, ElementName=Page}">
             <Grid Background="{StaticResource PhoneAccentBrush}"
@@ -74,10 +74,20 @@
                                         </Core:EventTriggerBehavior>
                                     </Interactivity:Interaction.Behaviors>
 
-                                    <TextBlock Text="{Binding Name}"
-                                           Foreground="White"
-                                           FontSize="30"
-                                           Margin="20,5,5,5"/>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions> 
+                                    
+                                    <TextBlock Grid.Column="0"
+                                               Text="{Binding Name}"
+                                               Foreground="White"
+                                               FontSize="30"
+                                               Margin="20,5,5,5"/>
+                                    
+                                    <AppBarButton Grid.Column="1"
+                                                  Icon="Delete"
+                                                  Command="{Binding DataContext.Delete, ElementName=Page}" CommandParameter="{Binding}" />
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>

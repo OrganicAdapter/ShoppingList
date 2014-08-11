@@ -1,4 +1,4 @@
-d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\ShoppingList.WindowsPhone.csproj;neutral
-d:\SoftIT\ShoppingList\ShoppingListLIB\ShoppingListLIB.csproj;neutral
-d:\SoftIT\UniversalExtensions\UniversalExtensions.csproj;neutral
-d:\SoftIT\UniversalExtensions\UniversalExtensions.csproj;neutral
+e:\GitHub\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\ShoppingList.WindowsPhone.csproj;neutral
+e:\GitHub\ShoppingList\ShoppingListLIB\ShoppingListLIB.csproj;neutral
+e:\GitHub\UniversalExtensions\UniversalExtensions.csproj;neutral
+e:\GitHub\UniversalExtensions\UniversalExtensions.csproj;neutral
