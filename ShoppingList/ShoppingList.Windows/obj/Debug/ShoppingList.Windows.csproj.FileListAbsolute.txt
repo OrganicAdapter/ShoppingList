@@ -56,11 +56,5 @@ D:\SoftIT\ShoppingList\ShoppingList\ShoppingList.Windows\obj\Debug\GalaSoft.Mvvm
 D:\SoftIT\ShoppingList\ShoppingList\ShoppingList.Windows\obj\Debug\ProjectArchitectures.txt
 D:\SoftIT\ShoppingList\ShoppingList\ShoppingList.Windows\bin\Debug\Microsoft.Xaml.Interactions.dll
 D:\SoftIT\ShoppingList\ShoppingList\ShoppingList.Windows\bin\Debug\Microsoft.Xaml.Interactivity.dll
-D:\SoftIT\ShoppingList\ShoppingList\ShoppingList.Windows\obj\Debug\Microsoft.Practices.ServiceLocation\layout.resfiles
-D:\SoftIT\ShoppingList\ShoppingList\ShoppingList.Windows\obj\Debug\Microsoft.Practices.ServiceLocation\layout.resfiles.intermediate
-D:\SoftIT\ShoppingList\ShoppingList\ShoppingList.Windows\obj\Debug\Microsoft.Practices.ServiceLocation\Resources.resfiles
-D:\SoftIT\ShoppingList\ShoppingList\ShoppingList.Windows\obj\Debug\Microsoft.Practices.ServiceLocation\Resources.resfiles.intermediate
-D:\SoftIT\ShoppingList\ShoppingList\ShoppingList.Windows\obj\Debug\Microsoft.Practices.ServiceLocation\pri.resfiles
-D:\SoftIT\ShoppingList\ShoppingList\ShoppingList.Windows\obj\Debug\Microsoft.Practices.ServiceLocation\pri.resfiles.intermediate
-D:\SoftIT\ShoppingList\ShoppingList\ShoppingList.Windows\obj\Debug\Microsoft.Practices.ServiceLocation\priconfig.xml
-D:\SoftIT\ShoppingList\ShoppingList\ShoppingList.Windows\obj\Debug\Microsoft.Practices.ServiceLocation\priconfig.xml.intermediate
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.Windows\bin\Debug\Newtonsoft.Json.dll
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.Windows\bin\Debug\Newtonsoft.Json.xml

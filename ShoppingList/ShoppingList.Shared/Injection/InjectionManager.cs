@@ -20,6 +20,7 @@ namespace ShoppingList.Injection
             SimpleIoc.Default.Register<IDataService, SampleDataService>();
             SimpleIoc.Default.Register<INavigationService, NavigationService>();
             SimpleIoc.Default.Register<ITypeService, TypeService>();
+            SimpleIoc.Default.Register<IStorageService, StorageService>();
 
             SimpleIoc.Default.Register<ShopsViewModel>();
             SimpleIoc.Default.Register<ProductsViewModel>();

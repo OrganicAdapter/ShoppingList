@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Roots >
+  <Roots.Interfaces>
+    <RootInterface FullName="Windows.UI.Xaml.Data.IValueConverter" />
+  </Roots.Interfaces>
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="Shops" />
     <RootPropertyPathName Name="Load" />
@@ -11,6 +14,9 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.ResourceDictionary" />
     <RootType FullName="ShoppingList.Injection.InjectionManager" />
+    <RootType FullName="UniversalExtensions.Converters.BooleanNegationConverter" />
+    <RootType FullName="UniversalExtensions.Converters.BooleanVisibilityNegationConverter" />
+    <RootType FullName="UniversalExtensions.Converters.BooleanVisibilityConverter" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="DataContext" />
       <RootProperty Name="Content" />

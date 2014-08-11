@@ -19,6 +19,7 @@
   </Prerequisites>
   <Resources>
     <Resource Language="EN-US" />
+    <Resource Language="HU-HU" />
   </Resources>
   <Applications>
     <Application Id="App" Executable="ShoppingList.Windows.exe" EntryPoint="ShoppingList.Windows.App">

@@ -44,7 +44,9 @@
     <Compile Include="Models\Data\Product.cs" />
     <Compile Include="Models\Data\Shop.cs" />
     <Compile Include="Models\Implementations\SampleDataService.cs" />
+    <Compile Include="Models\Implementations\StorageService.cs" />
     <Compile Include="Models\Interfaces\IDataService.cs" />
+    <Compile Include="Models\Interfaces\IStorageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ProductsViewModel.cs" />

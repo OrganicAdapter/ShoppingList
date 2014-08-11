@@ -18,3 +18,5 @@ D:\SoftIT\ShoppingList\ShoppingListLIB\obj\Debug\pri.resfiles.intermediate
 D:\SoftIT\ShoppingList\ShoppingListLIB\obj\Debug\qualifiers.txt
 D:\SoftIT\ShoppingList\ShoppingListLIB\obj\Debug\qualifiers.txt.intermediate
 D:\SoftIT\ShoppingList\ShoppingListLIB\obj\Debug\MultipleQualifiersPerDimensionFound.txt
+d:\SoftIT\ShoppingList\ShoppingListLIB\bin\Debug\Newtonsoft.Json.dll
+d:\SoftIT\ShoppingList\ShoppingListLIB\bin\Debug\Newtonsoft.Json.xml

@@ -5,10 +5,11 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using UniversalExtensions.GroupedItems;
 
 namespace ShoppingListLIB.Models.Data
 {
-    public class Product : INotifyPropertyChanged
+    public class Product : INotifyPropertyChanged, IGroupItem
     {
         public int ProductID { get; set; }
         public int ShopID { get; set; }
@@ -56,6 +57,16 @@ namespace ShoppingListLIB.Models.Data
         public DateTime Date { get; set; }
         public bool IsCompleted { get; set; }
 
+        public string Key
+        {
+            get { return Category; }
+        }
+
+
+        public Product()
+        {
+
+        }
 
         public Product(int shopID)
         {

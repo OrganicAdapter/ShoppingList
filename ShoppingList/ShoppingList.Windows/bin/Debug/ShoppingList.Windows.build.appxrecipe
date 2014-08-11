@@ -40,6 +40,9 @@
     <AppxPackagedFile Include="d:\SoftIT\UniversalExtensions\bin\Debug\UniversalExtensions.dll">
       <PackagePath>UniversalExtensions.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="d:\SoftIT\UniversalExtensions\bin\Debug\Newtonsoft.Json.dll">
+      <PackagePath>Newtonsoft.Json.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="d:\SoftIT\EgyenlitoUniversal\packages\Microsoft.Net.Http.2.2.22\lib\portable-net45+win8+wpa81\System.Net.Http.Extensions.dll">
       <PackagePath>System.Net.Http.Extensions.dll</PackagePath>
     </AppxPackagedFile>

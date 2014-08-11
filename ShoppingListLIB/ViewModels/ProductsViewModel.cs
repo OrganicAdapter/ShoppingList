@@ -7,8 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UniversalExtensions;
+using UniversalExtensions.GroupedItems;
 using UniversalExtensions.MVVM;
 using UniversalExtensions.Navigation;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace ShoppingListLIB.ViewModels
 {
@@ -17,6 +20,7 @@ namespace ShoppingListLIB.ViewModels
         #region Fields
 
         private readonly IDataService _dataService;
+        private readonly IStorageService _storageService;
 
         #endregion //Fields
 
@@ -26,14 +30,32 @@ namespace ShoppingListLIB.ViewModels
         public ObservableCollection<Product> Products
         {
             get { return _products; }
-            set { _products = value; RaisePropertyChanged(); }
+            set { _products = value; RaisePropertyChanged(); RaisePropertyChanged("GroupedProducts"); }
         }
 
         private ObservableCollection<Product> _myProducts;
         public ObservableCollection<Product> MyProducts
         {
             get { return _myProducts; }
-            set { _myProducts = value; RaisePropertyChanged(); RaisePropertyChanged("TotalPrice"); }
+            set { _myProducts = value; RaisePropertyChanged(); RaisePropertyChanged("TotalPrice"); RaisePropertyChanged("MyGroupedProducts"); }
+        }
+
+        public List<GroupedListItem<Product>> GroupedProducts
+        {
+            get
+            {
+                if (Products == null) return null;
+                return GroupedListItem<Product>.GroupItems(Products.ToList());
+            }
+        }
+
+        public List<GroupedListItem<Product>> MyGroupedProducts
+        {
+            get
+            {
+                if (Products == null) return null;
+                return GroupedListItem<Product>.GroupItems(MyProducts.ToList());
+            }
         }
 
         private bool _isAdding;
@@ -66,14 +88,19 @@ namespace ShoppingListLIB.ViewModels
             } 
         }
 
-
-        public Product NewProduct { get; set; }
+        private Product _newProduct;
+        public Product NewProduct
+        {
+            get { return _newProduct; }
+            set { _newProduct = value; RaisePropertyChanged(); }
+        }
 
 
         public RelayCommand Load { get; set; }
         public RelayCommand Add { get; set; }
         public RelayCommand<Product> Save { get; set; }
         public RelayCommand Cancel { get; set; }
+        public RelayCommand<Product> Edit { get; set; }
         public RelayCommand<Product> Increase { get; set; }
         public RelayCommand<Product> Decrease { get; set; }
 
@@ -81,18 +108,22 @@ namespace ShoppingListLIB.ViewModels
 
         #region Constructor
 
-        public ProductsViewModel(IDataService dataService)
+        public ProductsViewModel(IDataService dataService, IStorageService storageService)
         {
             _dataService = dataService;
+            _storageService = storageService;
 
             NewProduct = new Product(Main.Shop.ShopID);
 
             Load = new RelayCommand(ExecuteLoad);
             Add = new RelayCommand(ExecuteAdd);
             Save = new RelayCommand<Product>(ExecuteSave);
+            Edit = new RelayCommand<Product>(ExecuteEdit);
             Cancel = new RelayCommand(ExecuteCancel);
             Increase = new RelayCommand<Product>(ExecuteIncrease);
             Decrease = new RelayCommand<Product>(ExecuteDecrease);
+
+            (Window.Current.Content as Frame).Navigating += Navigating;
         }
 
         #endregion //Constructor
@@ -101,8 +132,9 @@ namespace ShoppingListLIB.ViewModels
 
         private async void ExecuteLoad()
         {
-            Products = Converter.ListToObservableCollection<Product>(await _dataService.GetProducts(Main.Shop.ShopID));
-            MyProducts = new ObservableCollection<Product>();
+            Products = Converter.ListToObservableCollection<Product>(await _storageService.LoadProducts(Main.Shop.ShopID, true));
+            MyProducts = Converter.ListToObservableCollection<Product>(await _storageService.LoadProducts(Main.Shop.ShopID, false));
+
             IsAdding = false;
         }
 
@@ -121,13 +153,36 @@ namespace ShoppingListLIB.ViewModels
                 MyProducts.Add(product);
                 Products.Remove(product);
 
+                _storageService.StoreProducts(Main.Shop.ShopID, MyProducts.ToList(), false);
+                _storageService.StoreProducts(Main.Shop.ShopID, Products.ToList(), true);
+
                 RaisePropertyChanged("TotalPrice");
+                RaisePropertyChanged("GroupedProducts");
+                RaisePropertyChanged("MyGroupedProducts");
+
+                if (Products.Count == 0)
+                    IsAdding = false;
             }
             else
             {
                 Products.Add(NewProduct);
+
+                _storageService.StoreProducts(Main.Shop.ShopID, Products.ToList(), true);
+
+                RaisePropertyChanged("GroupedProducts");
+
                 IsCreatingProduct = false;
             }
+        }
+
+        private void ExecuteEdit(Product product)
+        {
+            Products.Remove(product);
+            NewProduct = product;
+
+            IsCreatingProduct = true;
+
+            RaisePropertyChanged("GroupedProducts");
         }
 
         private void ExecuteCancel()
@@ -141,16 +196,27 @@ namespace ShoppingListLIB.ViewModels
         private void ExecuteIncrease(Product product)
         {
             product.Quantity++;
+
+            _storageService.StoreProducts(Main.Shop.ShopID, MyProducts.ToList(), false);
+
             RaisePropertyChanged("TotalPrice");
         }
 
         private void ExecuteDecrease(Product product)
         {
             product.Quantity--;
+
+            _storageService.StoreProducts(Main.Shop.ShopID, MyProducts.ToList(), false);
+
             RaisePropertyChanged("TotalPrice");
         }
 
-        #endregion //Methods
-                
+        void Navigating(object sender, Windows.UI.Xaml.Navigation.NavigatingCancelEventArgs e)
+        {
+            IsCreatingProduct = false;
+            IsAdding = false;
+        }
+
+        #endregion //Methods               
     }
 }

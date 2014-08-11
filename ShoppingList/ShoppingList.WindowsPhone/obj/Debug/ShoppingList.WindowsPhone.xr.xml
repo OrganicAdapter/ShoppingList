@@ -15,19 +15,23 @@
     <RootPropertyPathName Name="Cancel" />
     <RootPropertyPathName Name="Save" />
     <RootPropertyPathName Name="Products" />
+    <RootPropertyPathName Name="Items" />
+    <RootPropertyPathName Name="MyGroupedProducts" />
+    <RootPropertyPathName Name="GroupedProducts" />
     <RootPropertyPathName Name="IsCreatingProduct" />
-    <RootPropertyPathName Name="MyProducts" />
     <RootPropertyPathName Name="Decrease" />
     <RootPropertyPathName Name="Increase" />
     <RootPropertyPathName Name="Unit" />
     <RootPropertyPathName Name="Quantity" />
     <RootPropertyPathName Name="IsCompleted" />
+    <RootPropertyPathName Name="GroupName" />
     <RootPropertyPathName Name="TotalPrice" />
     <RootPropertyPathName Name="Main" />
     <RootPropertyPathName Name="Shop" />
     <RootPropertyPathName Name="NewProduct" />
     <RootPropertyPathName Name="Price" />
     <RootPropertyPathName Name="Category" />
+    <RootPropertyPathName Name="Edit" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
@@ -43,6 +47,7 @@
       <RootProperty Name="DataContext" />
       <RootProperty Name="BottomAppBar" />
       <RootProperty Name="Content" />
+      <RootProperty Name="Resources" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.Interactivity.Interaction">
       <RootMethod Name="GetBehaviors" />
@@ -64,6 +69,7 @@
       <RootProperty Name="Command" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="CommandParameter" />
+      <RootProperty Name="Foreground" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.Interactions.Core.EventTriggerBehavior">
       <RootProperty Name="EventName" />
@@ -80,6 +86,7 @@
       <RootProperty Name="RowDefinitions" />
       <RootProperty Name="ColumnDefinitions" />
       <RootProperty Name="Height" />
+      <RootProperty Name="Margin" />
       <RootMethod Name="GetRow" />
       <RootMethod Name="SetRow" />
       <RootMethod Name="GetColumnSpan" />
@@ -115,7 +122,6 @@
     <RootType FullName="Windows.UI.Xaml.Controls.ListBox">
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="ItemTemplate" />
-      <RootProperty Name="IsEnabled" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
       <RootProperty Name="Height" />
@@ -135,10 +141,32 @@
       <RootProperty Name="Width" />
     </RootType>
     <RootType FullName="ShoppingList.MainPage" />
+    <RootType FullName="Windows.UI.Xaml.Data.CollectionViewSource">
+      <RootProperty Name="IsSourceGrouped" />
+      <RootProperty Name="Source" />
+      <RootProperty Name="ItemsPath" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.SemanticZoom">
+      <RootProperty Name="ZoomedInView" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ListView">
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="IsEnabled" />
+      <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="GroupStyle" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.CheckBox">
       <RootProperty Name="Content" />
       <RootProperty Name="IsChecked" />
       <RootProperty Name="Foreground" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.GroupStyle">
+      <RootProperty Name="HidesIfEmpty" />
+      <RootProperty Name="HeaderTemplate" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Viewbox">
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Child" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="Orientation" />
