@@ -2,6 +2,7 @@
 using ShoppingListLIB.Models.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,8 +29,8 @@ namespace ShoppingListLIB.Models.Implementations
 
         public async Task<List<Product>> LoadProducts(int shopID, bool isAll)
         {
-            if (!ApplicationData.Current.LocalSettings.Values.ContainsKey(shopID + "," + isAll)) return new List<Product>();
-            var a = ApplicationData.Current.LocalSettings.Values[shopID + "," + isAll].ToString();
+            if (!ApplicationData.Current.LocalSettings.Values.ContainsKey(shopID + "," + isAll)) 
+                return new List<Product>();
 
             return await JsonSerializer.Deserialize<List<Product>>(ApplicationData.Current.LocalSettings.Values[shopID + "," + isAll].ToString());
         }
@@ -49,8 +50,8 @@ namespace ShoppingListLIB.Models.Implementations
 
         public async Task<List<Shop>> LoadShops()
         {
-            if (!ApplicationData.Current.LocalSettings.Values.ContainsKey("shops")) return new List<Shop>();
-            var a = ApplicationData.Current.LocalSettings.Values["shops"].ToString();
+            if (!ApplicationData.Current.LocalSettings.Values.ContainsKey("shops"))
+                return new List<Shop>();
 
             return await JsonSerializer.Deserialize<List<Shop>>(ApplicationData.Current.LocalSettings.Values["shops"].ToString());
         }
@@ -66,6 +67,27 @@ namespace ShoppingListLIB.Models.Implementations
 
             if (ApplicationData.Current.LocalSettings.Values.ContainsKey(shopID + "," + isAll))
                 ApplicationData.Current.LocalSettings.Values.Remove(shopID + "," + isAll);
+        }
+
+        public async void StoreCategories(List<Category> categories, int shopId)
+        {
+            if (categories == null || categories.Count == 0)
+            {
+                if (ApplicationData.Current.LocalSettings.Values.ContainsKey(shopId + ",categories"))
+                    ApplicationData.Current.LocalSettings.Values.Remove(shopId + ",categories");
+            }
+            else
+            {
+                ApplicationData.Current.LocalSettings.Values[shopId + ",categories"] = await JsonSerializer.Serialize<Category>(categories);
+            }
+        }
+
+        public async Task<List<Category>> LoadCategories(int shopId)
+        {
+            if (!ApplicationData.Current.LocalSettings.Values.ContainsKey(shopId + ",categories"))
+                return new List<Category>();
+
+            return await JsonSerializer.Deserialize<List<Category>>(ApplicationData.Current.LocalSettings.Values[shopId + ",categories"].ToString());
         }
     }
 }

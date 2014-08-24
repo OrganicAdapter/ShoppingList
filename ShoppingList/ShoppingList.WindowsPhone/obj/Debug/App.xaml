@@ -13,6 +13,9 @@
             <Converters:BooleanNegationConverter x:Key="BooleanNegationConverter" />
             <Converters:BooleanVisibilityNegationConverter x:Key="BooleanVisibilityNegationConverter" />
             <Converters:BooleanVisibilityConverter x:Key="BooleanVisibilityConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/MainDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
     

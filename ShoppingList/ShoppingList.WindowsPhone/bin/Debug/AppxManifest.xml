@@ -10,7 +10,7 @@
   <Identity Name="fb46768c-0b67-4c18-a1f8-2fdd4dc2be4d" Publisher="CN=Gergő" Version="1.0.0.0" ProcessorArchitecture="neutral" />
   <mp:PhoneIdentity PhoneProductId="fb46768c-0b67-4c18-a1f8-2fdd4dc2be4d" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>ShoppingList.WindowsPhone</DisplayName>
+    <DisplayName>Collective Shopping</DisplayName>
     <PublisherDisplayName>Gergő</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -24,7 +24,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="ShoppingList.WindowsPhone.exe" EntryPoint="ShoppingList.WindowsPhone.App">
-      <m3:VisualElements DisplayName="Shopping List" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="ShoppingList.WindowsPhone" ForegroundText="light" BackgroundColor="transparent">
+      <m3:VisualElements DisplayName="Collective Shopping" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="Collective shopping list." ForegroundText="light" BackgroundColor="transparent">
         <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png"></m3:DefaultTile>
         <m3:SplashScreen Image="Assets\SplashScreen.png" />
         <m3:InitialRotationPreference>

@@ -20,6 +20,7 @@ namespace ShoppingListLIB.ViewModels
         private readonly IDataService _dataService;
         private readonly INavigationService _navigationService;
         private readonly IStorageService _storageService;
+        private readonly IApiService _apiService;
 
         #endregion //Fields
 
@@ -49,6 +50,7 @@ namespace ShoppingListLIB.ViewModels
 
 
         public RelayCommand Load { get; set; }
+        public RelayCommand Sync { get; set; }
         public RelayCommand Add { get; set; }
         public RelayCommand Save { get; set; }
         public RelayCommand<Shop> Delete { get; set; }
@@ -59,15 +61,15 @@ namespace ShoppingListLIB.ViewModels
 
         #region Constructor
 
-        public ShopsViewModel(IDataService dataService, INavigationService navigationService, IStorageService storageService)
+        public ShopsViewModel(IDataService dataService, INavigationService navigationService, IStorageService storageService, IApiService apiService)
         {
             _dataService = dataService;
             _navigationService = navigationService;
             _storageService = storageService;
-
-            NewShop = new Shop();
+            _apiService = apiService;
 
             Load = new RelayCommand(ExecuteLoad);
+            Sync = new RelayCommand(ExecuteSync);
             Add = new RelayCommand(ExecuteAdd);
             Save = new RelayCommand(ExecuteSave);
             Delete = new RelayCommand<Shop>(ExecuteDelete);
@@ -82,20 +84,51 @@ namespace ShoppingListLIB.ViewModels
         private async void ExecuteLoad()
         {
             Shops = Converter.ListToObservableCollection<Shop>(await _storageService.LoadShops());
+            Shops = Converter.ListToObservableCollection<Shop>(Shops.OrderBy((x) => x.Name).ToList());
+
             IsAdding = false;
+        }
+
+        private async void ExecuteSync()
+        {
+            var localShops = Shops.ToList();
+            Shops = Converter.ListToObservableCollection<Shop>(await _apiService.SyncShops(Shops.ToList()));
+
+            foreach (var shop in localShops)
+            {
+                if (Shops.Where((x) => x.Name.Equals(shop.Name)).FirstOrDefault() == null)
+                    Shops.Add(shop);
+            }
+
+            _storageService.StoreShops(Shops.ToList());
         }
 
         private void ExecuteAdd()
         {
+            var id = Shops.Count;
+            id = SetShopId(id);
+
+            NewShop = new Shop(id, CultureInfo.CurrentCulture.ToString());
             IsAdding = true;
+        }
+
+        private int SetShopId(int id)
+        {
+            foreach (var shop in Shops)
+            {
+                if (shop.ShopID == id)
+                {
+                    SetShopId(id++);
+                }
+            }
+
+            return id;
         }
 
         private void ExecuteSave()
         {
             IsAdding = false;
-            NewShop.ShopID = Shops.Count;
             Shops.Add(NewShop);
-            NewShop = new Shop();
 
             _storageService.StoreShops(Shops.ToList());
         }

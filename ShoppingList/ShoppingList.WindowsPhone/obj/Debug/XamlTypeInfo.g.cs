@@ -124,53 +124,57 @@ namespace ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[22];
+            _typeNameTable = new string[24];
             _typeNameTable[0] = "ShoppingList.Injection.InjectionManager";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "ShoppingListLIB.ViewModels.ShopsViewModel";
             _typeNameTable[3] = "ShoppingListLIB.ViewModels.ViewModelBase";
             _typeNameTable[4] = "ShoppingListLIB.ViewModels.ProductsViewModel";
-            _typeNameTable[5] = "UniversalExtensions.Converters.BooleanNegationConverter";
-            _typeNameTable[6] = "UniversalExtensions.Converters.BooleanVisibilityNegationConverter";
-            _typeNameTable[7] = "UniversalExtensions.Converters.BooleanVisibilityConverter";
-            _typeNameTable[8] = "Microsoft.Xaml.Interactivity.Interaction";
-            _typeNameTable[9] = "Microsoft.Xaml.Interactivity.BehaviorCollection";
-            _typeNameTable[10] = "Windows.UI.Xaml.DependencyObjectCollection";
-            _typeNameTable[11] = "Windows.UI.Xaml.DependencyObject";
-            _typeNameTable[12] = "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior";
-            _typeNameTable[13] = "Microsoft.Xaml.Interactivity.ActionCollection";
-            _typeNameTable[14] = "String";
-            _typeNameTable[15] = "Microsoft.Xaml.Interactions.Core.InvokeCommandAction";
-            _typeNameTable[16] = "System.Windows.Input.ICommand";
-            _typeNameTable[17] = "Windows.UI.Xaml.Data.IValueConverter";
-            _typeNameTable[18] = "ShoppingList.MainPage";
-            _typeNameTable[19] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[20] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[21] = "ShoppingList.Products";
+            _typeNameTable[5] = "ShoppingListLIB.ViewModels.SettingsViewModel";
+            _typeNameTable[6] = "UniversalExtensions.Converters.BooleanNegationConverter";
+            _typeNameTable[7] = "UniversalExtensions.Converters.BooleanVisibilityNegationConverter";
+            _typeNameTable[8] = "UniversalExtensions.Converters.BooleanVisibilityConverter";
+            _typeNameTable[9] = "Microsoft.Xaml.Interactivity.Interaction";
+            _typeNameTable[10] = "Microsoft.Xaml.Interactivity.BehaviorCollection";
+            _typeNameTable[11] = "Windows.UI.Xaml.DependencyObjectCollection";
+            _typeNameTable[12] = "Windows.UI.Xaml.DependencyObject";
+            _typeNameTable[13] = "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior";
+            _typeNameTable[14] = "Microsoft.Xaml.Interactivity.ActionCollection";
+            _typeNameTable[15] = "String";
+            _typeNameTable[16] = "Microsoft.Xaml.Interactions.Core.InvokeCommandAction";
+            _typeNameTable[17] = "System.Windows.Input.ICommand";
+            _typeNameTable[18] = "Windows.UI.Xaml.Data.IValueConverter";
+            _typeNameTable[19] = "ShoppingList.Implementations.OpenMenuFlyoutAction";
+            _typeNameTable[20] = "ShoppingList.MainPage";
+            _typeNameTable[21] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable[22] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[23] = "ShoppingList.Products";
 
-            _typeTable = new global::System.Type[22];
+            _typeTable = new global::System.Type[24];
             _typeTable[0] = typeof(global::ShoppingList.Injection.InjectionManager);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::ShoppingListLIB.ViewModels.ShopsViewModel);
             _typeTable[3] = typeof(global::ShoppingListLIB.ViewModels.ViewModelBase);
             _typeTable[4] = typeof(global::ShoppingListLIB.ViewModels.ProductsViewModel);
-            _typeTable[5] = typeof(global::UniversalExtensions.Converters.BooleanNegationConverter);
-            _typeTable[6] = typeof(global::UniversalExtensions.Converters.BooleanVisibilityNegationConverter);
-            _typeTable[7] = typeof(global::UniversalExtensions.Converters.BooleanVisibilityConverter);
-            _typeTable[8] = typeof(global::Microsoft.Xaml.Interactivity.Interaction);
-            _typeTable[9] = typeof(global::Microsoft.Xaml.Interactivity.BehaviorCollection);
-            _typeTable[10] = typeof(global::Windows.UI.Xaml.DependencyObjectCollection);
-            _typeTable[11] = typeof(global::Windows.UI.Xaml.DependencyObject);
-            _typeTable[12] = typeof(global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior);
-            _typeTable[13] = typeof(global::Microsoft.Xaml.Interactivity.ActionCollection);
-            _typeTable[14] = typeof(global::System.String);
-            _typeTable[15] = typeof(global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction);
-            _typeTable[16] = typeof(global::System.Windows.Input.ICommand);
-            _typeTable[17] = typeof(global::Windows.UI.Xaml.Data.IValueConverter);
-            _typeTable[18] = typeof(global::ShoppingList.MainPage);
-            _typeTable[19] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[20] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[21] = typeof(global::ShoppingList.Products);
+            _typeTable[5] = typeof(global::ShoppingListLIB.ViewModels.SettingsViewModel);
+            _typeTable[6] = typeof(global::UniversalExtensions.Converters.BooleanNegationConverter);
+            _typeTable[7] = typeof(global::UniversalExtensions.Converters.BooleanVisibilityNegationConverter);
+            _typeTable[8] = typeof(global::UniversalExtensions.Converters.BooleanVisibilityConverter);
+            _typeTable[9] = typeof(global::Microsoft.Xaml.Interactivity.Interaction);
+            _typeTable[10] = typeof(global::Microsoft.Xaml.Interactivity.BehaviorCollection);
+            _typeTable[11] = typeof(global::Windows.UI.Xaml.DependencyObjectCollection);
+            _typeTable[12] = typeof(global::Windows.UI.Xaml.DependencyObject);
+            _typeTable[13] = typeof(global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior);
+            _typeTable[14] = typeof(global::Microsoft.Xaml.Interactivity.ActionCollection);
+            _typeTable[15] = typeof(global::System.String);
+            _typeTable[16] = typeof(global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction);
+            _typeTable[17] = typeof(global::System.Windows.Input.ICommand);
+            _typeTable[18] = typeof(global::Windows.UI.Xaml.Data.IValueConverter);
+            _typeTable[19] = typeof(global::ShoppingList.Implementations.OpenMenuFlyoutAction);
+            _typeTable[20] = typeof(global::ShoppingList.MainPage);
+            _typeTable[21] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable[22] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[23] = typeof(global::ShoppingList.Products);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -207,22 +211,24 @@ namespace ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo
 
         private object Activate_0_InjectionManager() { return new global::ShoppingList.Injection.InjectionManager(); }
         private object Activate_3_ViewModelBase() { return new global::ShoppingListLIB.ViewModels.ViewModelBase(); }
-        private object Activate_5_BooleanNegationConverter() { return new global::UniversalExtensions.Converters.BooleanNegationConverter(); }
-        private object Activate_6_BooleanVisibilityNegationConverter() { return new global::UniversalExtensions.Converters.BooleanVisibilityNegationConverter(); }
-        private object Activate_7_BooleanVisibilityConverter() { return new global::UniversalExtensions.Converters.BooleanVisibilityConverter(); }
-        private object Activate_9_BehaviorCollection() { return new global::Microsoft.Xaml.Interactivity.BehaviorCollection(); }
-        private object Activate_12_EventTriggerBehavior() { return new global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior(); }
-        private object Activate_13_ActionCollection() { return new global::Microsoft.Xaml.Interactivity.ActionCollection(); }
-        private object Activate_15_InvokeCommandAction() { return new global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction(); }
-        private object Activate_18_MainPage() { return new global::ShoppingList.MainPage(); }
-        private object Activate_21_Products() { return new global::ShoppingList.Products(); }
-        private void VectorAdd_9_BehaviorCollection(object instance, object item)
+        private object Activate_5_SettingsViewModel() { return new global::ShoppingListLIB.ViewModels.SettingsViewModel(); }
+        private object Activate_6_BooleanNegationConverter() { return new global::UniversalExtensions.Converters.BooleanNegationConverter(); }
+        private object Activate_7_BooleanVisibilityNegationConverter() { return new global::UniversalExtensions.Converters.BooleanVisibilityNegationConverter(); }
+        private object Activate_8_BooleanVisibilityConverter() { return new global::UniversalExtensions.Converters.BooleanVisibilityConverter(); }
+        private object Activate_10_BehaviorCollection() { return new global::Microsoft.Xaml.Interactivity.BehaviorCollection(); }
+        private object Activate_13_EventTriggerBehavior() { return new global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior(); }
+        private object Activate_14_ActionCollection() { return new global::Microsoft.Xaml.Interactivity.ActionCollection(); }
+        private object Activate_16_InvokeCommandAction() { return new global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction(); }
+        private object Activate_19_OpenMenuFlyoutAction() { return new global::ShoppingList.Implementations.OpenMenuFlyoutAction(); }
+        private object Activate_20_MainPage() { return new global::ShoppingList.MainPage(); }
+        private object Activate_23_Products() { return new global::ShoppingList.Products(); }
+        private void VectorAdd_10_BehaviorCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.DependencyObject>)instance;
             var newItem = (global::Windows.UI.Xaml.DependencyObject)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_13_ActionCollection(object instance, object item)
+        private void VectorAdd_14_ActionCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.DependencyObject>)instance;
             var newItem = (global::Windows.UI.Xaml.DependencyObject)item;
@@ -244,6 +250,7 @@ namespace ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo
                 userType.Activator = Activate_0_InjectionManager;
                 userType.AddMemberName("Shops");
                 userType.AddMemberName("Products");
+                userType.AddMemberName("Settings");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -270,48 +277,54 @@ namespace ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 5:   //  UniversalExtensions.Converters.BooleanNegationConverter
-                userType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_5_BooleanNegationConverter;
+            case 5:   //  ShoppingListLIB.ViewModels.SettingsViewModel
+                userType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("ShoppingListLIB.ViewModels.ViewModelBase"));
+                userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 6:   //  UniversalExtensions.Converters.BooleanVisibilityNegationConverter
+            case 6:   //  UniversalExtensions.Converters.BooleanNegationConverter
                 userType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_6_BooleanVisibilityNegationConverter;
+                userType.Activator = Activate_6_BooleanNegationConverter;
                 xamlType = userType;
                 break;
 
-            case 7:   //  UniversalExtensions.Converters.BooleanVisibilityConverter
+            case 7:   //  UniversalExtensions.Converters.BooleanVisibilityNegationConverter
                 userType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_7_BooleanVisibilityConverter;
+                userType.Activator = Activate_7_BooleanVisibilityNegationConverter;
                 xamlType = userType;
                 break;
 
-            case 8:   //  Microsoft.Xaml.Interactivity.Interaction
+            case 8:   //  UniversalExtensions.Converters.BooleanVisibilityConverter
+                userType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_8_BooleanVisibilityConverter;
+                xamlType = userType;
+                break;
+
+            case 9:   //  Microsoft.Xaml.Interactivity.Interaction
                 userType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.AddMemberName("Behaviors");
                 xamlType = userType;
                 break;
 
-            case 9:   //  Microsoft.Xaml.Interactivity.BehaviorCollection
+            case 10:   //  Microsoft.Xaml.Interactivity.BehaviorCollection
                 userType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObjectCollection"));
-                userType.CollectionAdd = VectorAdd_9_BehaviorCollection;
+                userType.CollectionAdd = VectorAdd_10_BehaviorCollection;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 10:   //  Windows.UI.Xaml.DependencyObjectCollection
+            case 11:   //  Windows.UI.Xaml.DependencyObjectCollection
                 xamlType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 11:   //  Windows.UI.Xaml.DependencyObject
+            case 12:   //  Windows.UI.Xaml.DependencyObject
                 xamlType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 12:   //  Microsoft.Xaml.Interactions.Core.EventTriggerBehavior
+            case 13:   //  Microsoft.Xaml.Interactions.Core.EventTriggerBehavior
                 userType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
-                userType.Activator = Activate_12_EventTriggerBehavior;
+                userType.Activator = Activate_13_EventTriggerBehavior;
                 userType.SetContentPropertyName("Microsoft.Xaml.Interactions.Core.EventTriggerBehavior.Actions");
                 userType.AddMemberName("Actions");
                 userType.AddMemberName("EventName");
@@ -320,20 +333,20 @@ namespace ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 13:   //  Microsoft.Xaml.Interactivity.ActionCollection
+            case 14:   //  Microsoft.Xaml.Interactivity.ActionCollection
                 userType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObjectCollection"));
-                userType.CollectionAdd = VectorAdd_13_ActionCollection;
+                userType.CollectionAdd = VectorAdd_14_ActionCollection;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 14:   //  String
+            case 15:   //  String
                 xamlType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 15:   //  Microsoft.Xaml.Interactions.Core.InvokeCommandAction
+            case 16:   //  Microsoft.Xaml.Interactions.Core.InvokeCommandAction
                 userType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
-                userType.Activator = Activate_15_InvokeCommandAction;
+                userType.Activator = Activate_16_InvokeCommandAction;
                 userType.AddMemberName("Command");
                 userType.AddMemberName("CommandParameter");
                 userType.AddMemberName("InputConverter");
@@ -342,34 +355,41 @@ namespace ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 16:   //  System.Windows.Input.ICommand
+            case 17:   //  System.Windows.Input.ICommand
                 userType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, null);
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 17:   //  Windows.UI.Xaml.Data.IValueConverter
+            case 18:   //  Windows.UI.Xaml.Data.IValueConverter
                 xamlType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 18:   //  ShoppingList.MainPage
-                userType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_18_MainPage;
+            case 19:   //  ShoppingList.Implementations.OpenMenuFlyoutAction
+                userType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
+                userType.Activator = Activate_19_OpenMenuFlyoutAction;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 19:   //  Windows.UI.Xaml.Controls.Page
-                xamlType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlSystemBaseType(typeName, type);
-                break;
-
-            case 20:   //  Windows.UI.Xaml.Controls.UserControl
-                xamlType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlSystemBaseType(typeName, type);
-                break;
-
-            case 21:   //  ShoppingList.Products
+            case 20:   //  ShoppingList.MainPage
                 userType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_21_Products;
+                userType.Activator = Activate_20_MainPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 21:   //  Windows.UI.Xaml.Controls.Page
+                xamlType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 22:   //  Windows.UI.Xaml.Controls.UserControl
+                xamlType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 23:   //  ShoppingList.Products
+                userType = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_23_Products;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -388,90 +408,95 @@ namespace ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo
             var that = (global::ShoppingList.Injection.InjectionManager)instance;
             return that.Products;
         }
-        private object get_2_Interaction_Behaviors(object instance)
+        private object get_2_InjectionManager_Settings(object instance)
+        {
+            var that = (global::ShoppingList.Injection.InjectionManager)instance;
+            return that.Settings;
+        }
+        private object get_3_Interaction_Behaviors(object instance)
         {
             return global::Microsoft.Xaml.Interactivity.Interaction.GetBehaviors((global::Windows.UI.Xaml.DependencyObject)instance);
         }
-        private void set_2_Interaction_Behaviors(object instance, object Value)
+        private void set_3_Interaction_Behaviors(object instance, object Value)
         {
             global::Microsoft.Xaml.Interactivity.Interaction.SetBehaviors((global::Windows.UI.Xaml.DependencyObject)instance, (global::Microsoft.Xaml.Interactivity.BehaviorCollection)Value);
         }
-        private object get_3_EventTriggerBehavior_Actions(object instance)
+        private object get_4_EventTriggerBehavior_Actions(object instance)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior)instance;
             return that.Actions;
         }
-        private object get_4_EventTriggerBehavior_EventName(object instance)
+        private object get_5_EventTriggerBehavior_EventName(object instance)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior)instance;
             return that.EventName;
         }
-        private void set_4_EventTriggerBehavior_EventName(object instance, object Value)
+        private void set_5_EventTriggerBehavior_EventName(object instance, object Value)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior)instance;
             that.EventName = (global::System.String)Value;
         }
-        private object get_5_EventTriggerBehavior_SourceObject(object instance)
+        private object get_6_EventTriggerBehavior_SourceObject(object instance)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior)instance;
             return that.SourceObject;
         }
-        private void set_5_EventTriggerBehavior_SourceObject(object instance, object Value)
+        private void set_6_EventTriggerBehavior_SourceObject(object instance, object Value)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior)instance;
             that.SourceObject = (global::System.Object)Value;
         }
-        private object get_6_EventTriggerBehavior_AssociatedObject(object instance)
+        private object get_7_EventTriggerBehavior_AssociatedObject(object instance)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.EventTriggerBehavior)instance;
             return that.AssociatedObject;
         }
-        private object get_7_InvokeCommandAction_Command(object instance)
+        private object get_8_InvokeCommandAction_Command(object instance)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
             return that.Command;
         }
-        private void set_7_InvokeCommandAction_Command(object instance, object Value)
+        private void set_8_InvokeCommandAction_Command(object instance, object Value)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
             that.Command = (global::System.Windows.Input.ICommand)Value;
         }
-        private object get_8_InvokeCommandAction_CommandParameter(object instance)
+        private object get_9_InvokeCommandAction_CommandParameter(object instance)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
             return that.CommandParameter;
         }
-        private void set_8_InvokeCommandAction_CommandParameter(object instance, object Value)
+        private void set_9_InvokeCommandAction_CommandParameter(object instance, object Value)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
             that.CommandParameter = (global::System.Object)Value;
         }
-        private object get_9_InvokeCommandAction_InputConverter(object instance)
+        private object get_10_InvokeCommandAction_InputConverter(object instance)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
             return that.InputConverter;
         }
-        private void set_9_InvokeCommandAction_InputConverter(object instance, object Value)
+        private void set_10_InvokeCommandAction_InputConverter(object instance, object Value)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
             that.InputConverter = (global::Windows.UI.Xaml.Data.IValueConverter)Value;
         }
-        private object get_10_InvokeCommandAction_InputConverterParameter(object instance)
+        private object get_11_InvokeCommandAction_InputConverterParameter(object instance)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
             return that.InputConverterParameter;
         }
-        private void set_10_InvokeCommandAction_InputConverterParameter(object instance, object Value)
+        private void set_11_InvokeCommandAction_InputConverterParameter(object instance, object Value)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
             that.InputConverterParameter = (global::System.Object)Value;
         }
-        private object get_11_InvokeCommandAction_InputConverterLanguage(object instance)
+        private object get_12_InvokeCommandAction_InputConverterLanguage(object instance)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
             return that.InputConverterLanguage;
         }
-        private void set_11_InvokeCommandAction_InputConverterLanguage(object instance, object Value)
+        private void set_12_InvokeCommandAction_InputConverterLanguage(object instance, object Value)
         {
             var that = (global::Microsoft.Xaml.Interactions.Core.InvokeCommandAction)instance;
             that.InputConverterLanguage = (global::System.String)Value;
@@ -496,75 +521,81 @@ namespace ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo
                 xamlMember.Getter = get_1_InjectionManager_Products;
                 xamlMember.SetIsReadOnly();
                 break;
+            case "ShoppingList.Injection.InjectionManager.Settings":
+                userType = (global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType)GetXamlTypeByName("ShoppingList.Injection.InjectionManager");
+                xamlMember = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlMember(this, "Settings", "ShoppingListLIB.ViewModels.SettingsViewModel");
+                xamlMember.Getter = get_2_InjectionManager_Settings;
+                xamlMember.SetIsReadOnly();
+                break;
             case "Microsoft.Xaml.Interactivity.Interaction.Behaviors":
                 userType = (global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactivity.Interaction");
                 xamlMember = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlMember(this, "Behaviors", "Microsoft.Xaml.Interactivity.BehaviorCollection");
                 xamlMember.SetTargetTypeName("Windows.UI.Xaml.DependencyObject");
                 xamlMember.SetIsAttachable();
-                xamlMember.Getter = get_2_Interaction_Behaviors;
-                xamlMember.Setter = set_2_Interaction_Behaviors;
+                xamlMember.Getter = get_3_Interaction_Behaviors;
+                xamlMember.Setter = set_3_Interaction_Behaviors;
                 break;
             case "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior.Actions":
                 userType = (global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.EventTriggerBehavior");
                 xamlMember = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlMember(this, "Actions", "Microsoft.Xaml.Interactivity.ActionCollection");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_3_EventTriggerBehavior_Actions;
+                xamlMember.Getter = get_4_EventTriggerBehavior_Actions;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior.EventName":
                 userType = (global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.EventTriggerBehavior");
                 xamlMember = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlMember(this, "EventName", "String");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_4_EventTriggerBehavior_EventName;
-                xamlMember.Setter = set_4_EventTriggerBehavior_EventName;
+                xamlMember.Getter = get_5_EventTriggerBehavior_EventName;
+                xamlMember.Setter = set_5_EventTriggerBehavior_EventName;
                 break;
             case "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior.SourceObject":
                 userType = (global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.EventTriggerBehavior");
                 xamlMember = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlMember(this, "SourceObject", "Object");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_5_EventTriggerBehavior_SourceObject;
-                xamlMember.Setter = set_5_EventTriggerBehavior_SourceObject;
+                xamlMember.Getter = get_6_EventTriggerBehavior_SourceObject;
+                xamlMember.Setter = set_6_EventTriggerBehavior_SourceObject;
                 break;
             case "Microsoft.Xaml.Interactions.Core.EventTriggerBehavior.AssociatedObject":
                 userType = (global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.EventTriggerBehavior");
                 xamlMember = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlMember(this, "AssociatedObject", "Windows.UI.Xaml.DependencyObject");
-                xamlMember.Getter = get_6_EventTriggerBehavior_AssociatedObject;
+                xamlMember.Getter = get_7_EventTriggerBehavior_AssociatedObject;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.Xaml.Interactions.Core.InvokeCommandAction.Command":
                 userType = (global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.InvokeCommandAction");
                 xamlMember = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlMember(this, "Command", "System.Windows.Input.ICommand");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_7_InvokeCommandAction_Command;
-                xamlMember.Setter = set_7_InvokeCommandAction_Command;
+                xamlMember.Getter = get_8_InvokeCommandAction_Command;
+                xamlMember.Setter = set_8_InvokeCommandAction_Command;
                 break;
             case "Microsoft.Xaml.Interactions.Core.InvokeCommandAction.CommandParameter":
                 userType = (global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.InvokeCommandAction");
                 xamlMember = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlMember(this, "CommandParameter", "Object");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_8_InvokeCommandAction_CommandParameter;
-                xamlMember.Setter = set_8_InvokeCommandAction_CommandParameter;
+                xamlMember.Getter = get_9_InvokeCommandAction_CommandParameter;
+                xamlMember.Setter = set_9_InvokeCommandAction_CommandParameter;
                 break;
             case "Microsoft.Xaml.Interactions.Core.InvokeCommandAction.InputConverter":
                 userType = (global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.InvokeCommandAction");
                 xamlMember = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlMember(this, "InputConverter", "Windows.UI.Xaml.Data.IValueConverter");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_9_InvokeCommandAction_InputConverter;
-                xamlMember.Setter = set_9_InvokeCommandAction_InputConverter;
+                xamlMember.Getter = get_10_InvokeCommandAction_InputConverter;
+                xamlMember.Setter = set_10_InvokeCommandAction_InputConverter;
                 break;
             case "Microsoft.Xaml.Interactions.Core.InvokeCommandAction.InputConverterParameter":
                 userType = (global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.InvokeCommandAction");
                 xamlMember = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlMember(this, "InputConverterParameter", "Object");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_10_InvokeCommandAction_InputConverterParameter;
-                xamlMember.Setter = set_10_InvokeCommandAction_InputConverterParameter;
+                xamlMember.Getter = get_11_InvokeCommandAction_InputConverterParameter;
+                xamlMember.Setter = set_11_InvokeCommandAction_InputConverterParameter;
                 break;
             case "Microsoft.Xaml.Interactions.Core.InvokeCommandAction.InputConverterLanguage":
                 userType = (global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.Xaml.Interactions.Core.InvokeCommandAction");
                 xamlMember = new global::ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo.XamlMember(this, "InputConverterLanguage", "String");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_11_InvokeCommandAction_InputConverterLanguage;
-                xamlMember.Setter = set_11_InvokeCommandAction_InputConverterLanguage;
+                xamlMember.Getter = get_12_InvokeCommandAction_InputConverterLanguage;
+                xamlMember.Setter = set_12_InvokeCommandAction_InputConverterLanguage;
                 break;
             }
             return xamlMember;

@@ -15,7 +15,7 @@ namespace ShoppingListLIB.Models.Data
         public string Name
         {
             get { return _name; }
-            set { _name = value.ToUpper(); }
+            set { _name = value.ToUpper().Trim(); }
         }
 
 
@@ -23,9 +23,10 @@ namespace ShoppingListLIB.Models.Data
         public string Culture
         {
             get { return _culture; }
-            set { _culture = value.ToLower(); }
+            set { _culture = value.ToLower().Trim(); }
         }
 
+        public bool IsEnabled { get; set; }
 
 
         public Shop()
@@ -33,6 +34,7 @@ namespace ShoppingListLIB.Models.Data
             ShopID = -1;
             Name = "";
             Culture = CultureInfo.CurrentCulture.ToString();
+            IsEnabled = false;
         }
 
         public Shop(int shopID, string name, string culture)
@@ -40,6 +42,15 @@ namespace ShoppingListLIB.Models.Data
             ShopID = shopID;
             Name = name;
             Culture = culture;
+            IsEnabled = false;
+        }
+
+        public Shop(int shopId,string culture)
+        {
+            ShopID = shopId;
+            Name = "";
+            Culture = culture;
+            IsEnabled = false;
         }
     }
 }

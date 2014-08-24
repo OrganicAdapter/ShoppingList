@@ -117,14 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Accept.Label" xml:space="preserve">
-    <value>Accept</value>
-  </data>
   <data name="Add.Label" xml:space="preserve">
     <value>New</value>
   </data>
   <data name="Cancel.Content" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="Category.Label" xml:space="preserve">
+    <value>New category</value>
+  </data>
+  <data name="ClearList.Label" xml:space="preserve">
+    <value>Clear</value>
   </data>
   <data name="Currency.Text" xml:space="preserve">
     <value>$</value>
@@ -132,11 +135,11 @@
   <data name="New.Content" xml:space="preserve">
     <value>Add</value>
   </data>
-  <data name="NewProduct.Text" xml:space="preserve">
-    <value>New product</value>
+  <data name="Pin.Label" xml:space="preserve">
+    <value>Pin to start</value>
   </data>
-  <data name="ProductCategory.PlaceholderText" xml:space="preserve">
-    <value>Category</value>
+  <data name="Price.Text" xml:space="preserve">
+    <value>Price:</value>
   </data>
   <data name="ProductName.PlaceholderText" xml:space="preserve">
     <value>Name</value>
@@ -150,11 +153,29 @@
   <data name="ProductUnit.PlaceholderText" xml:space="preserve">
     <value>Unit</value>
   </data>
+  <data name="Remove.Text" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="SendEmail.Label" xml:space="preserve">
+    <value>Send E-mail</value>
+  </data>
+  <data name="SendSms.Label" xml:space="preserve">
+    <value>Send SMS</value>
+  </data>
   <data name="Settings.Header" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="Shelf.Header" xml:space="preserve">
+    <value>Shelf</value>
+  </data>
   <data name="Shops.Header" xml:space="preserve">
     <value>Shops</value>
+  </data>
+  <data name="Sync.Label" xml:space="preserve">
+    <value>Sync</value>
+  </data>
+  <data name="SyncShops.Label" xml:space="preserve">
+    <value>Sync</value>
   </data>
   <data name="TotalPrice.Text" xml:space="preserve">
     <value>Total price:</value>

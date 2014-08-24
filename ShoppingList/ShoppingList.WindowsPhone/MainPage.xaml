@@ -6,16 +6,21 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"  xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Flyout="using:ShoppingList.Implementations"
     mc:Ignorable="d"
     Background="White"
     DataContext="{Binding Shops, Source={StaticResource Locator}}"
     x:Name="Page">
     
 	<Page.BottomAppBar>
-        <CommandBar Visibility="{Binding IsAdding, Converter={StaticResource BooleanVisibilityNegationConverter}}">
+        <CommandBar Visibility="{Binding IsAdding, Converter={StaticResource BooleanVisibilityNegationConverter}}"
+                    Background="{StaticResource GreenBrush}">
             <AppBarButton x:Uid="Add"
                           Icon="Add" 
                           Command="{Binding Add}"/>
+            <AppBarButton x:Uid="SyncShops"
+                          Icon="Sync" 
+                          Command="{Binding Sync}"/>
         </CommandBar>
 	</Page.BottomAppBar>
 
@@ -28,7 +33,7 @@
     <Grid>
         <Popup DataContext="{Binding NewShop}"
                IsOpen="{Binding DataContext.IsAdding, ElementName=Page}">
-            <Grid Background="{StaticResource PhoneAccentBrush}"
+            <Grid Background="{StaticResource GreenBrush}"
                   Width="400">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -41,15 +46,18 @@
 
                 <TextBox Grid.Row="0" Grid.ColumnSpan="2"
                          Text="{Binding Name, Mode=TwoWay}"
-                         Margin="20,30,20,10"/>
+                         Margin="20,30,20,10"
+                         Foreground="{StaticResource BlueBrush}"/>
                 <Button x:Uid="New" 
                         Grid.Row="1" Grid.Column="0"
                         Command="{Binding DataContext.Save, ElementName=Page}"
-                        HorizontalAlignment="Center" />
+                        HorizontalAlignment="Center"
+                        Foreground="White" BorderBrush="White" />
                 <Button x:Uid="Cancel"
                         Grid.Row="1" Grid.Column="1"
                         Command="{Binding DataContext.Cancel, ElementName=Page}"
-                        HorizontalAlignment="Center" />
+                        HorizontalAlignment="Center"
+                        Foreground="White" BorderBrush="White"/>
             </Grid>
         </Popup>
 
@@ -57,7 +65,7 @@
             <Pivot.HeaderTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding}"
-                           Foreground="{StaticResource PhoneAccentBrush}"/>
+                               Foreground="{StaticResource GreenBrush}"/>
                 </DataTemplate>
             </Pivot.HeaderTemplate>
 
@@ -67,27 +75,28 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid Width="300"
-                                  Background="{StaticResource PhoneAccentBrush}">
+                                      Background="{StaticResource BlueBrush}">
                                     <Interactivity:Interaction.Behaviors>
                                         <Core:EventTriggerBehavior EventName="Tapped">
                                             <Core:InvokeCommandAction Command="{Binding DataContext.Open, ElementName=Page}" CommandParameter="{Binding}" />
                                         </Core:EventTriggerBehavior>
+                                        <Core:EventTriggerBehavior EventName="Holding">
+                                            <Flyout:OpenMenuFlyoutAction />
+                                        </Core:EventTriggerBehavior>
                                     </Interactivity:Interaction.Behaviors>
 
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions> 
-                                    
-                                    <TextBlock Grid.Column="0"
-                                               Text="{Binding Name}"
-                                               Foreground="White"
-                                               FontSize="30"
-                                               Margin="20,5,5,5"/>
-                                    
-                                    <AppBarButton Grid.Column="1"
-                                                  Icon="Delete"
-                                                  Command="{Binding DataContext.Delete, ElementName=Page}" CommandParameter="{Binding}" />
+                                    <FlyoutBase.AttachedFlyout>
+                                        <MenuFlyout>
+                                            <MenuFlyoutItem x:Uid="Remove" Command="{Binding DataContext.Delete, ElementName=Page}" CommandParameter="{Binding}" />
+                                        </MenuFlyout>
+                                    </FlyoutBase.AttachedFlyout>
+
+                                    <Viewbox Width="250" Height="100"
+                                             VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                                             Margin="10,10,10,-20">
+                                        <TextBlock Text="{Binding Name}"
+                                                   Foreground="White"/>
+                                    </Viewbox>
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
@@ -95,8 +104,30 @@
                 </Grid>
             </PivotItem>
 
-            <PivotItem x:Uid="Settings">
-
+            <PivotItem x:Uid="Settings"
+                       DataContext="{Binding Settings, Source={StaticResource Locator}}">
+                <Interactivity:Interaction.Behaviors>
+                    <Core:EventTriggerBehavior EventName="Loaded">
+                        <Core:InvokeCommandAction Command="{Binding Load}" />
+                    </Core:EventTriggerBehavior>
+                </Interactivity:Interaction.Behaviors>
+                
+                <ComboBox x:Name="CultureList"
+                          ItemsSource="{Binding Cultures}"
+                          BorderBrush="{StaticResource BlueBrush}"
+                          Foreground="{StaticResource BlueBrush}">
+                    <Interactivity:Interaction.Behaviors>
+                        <Core:EventTriggerBehavior EventName="SelectionChanged">
+                            <Core:InvokeCommandAction Command="{Binding CultureSelected}" CommandParameter="{Binding SelectedValue, ElementName=CultureList}" />
+                        </Core:EventTriggerBehavior>
+                    </Interactivity:Interaction.Behaviors>
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}"
+                                       Foreground="{StaticResource BlueBrush}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </PivotItem>
         </Pivot>
     </Grid>

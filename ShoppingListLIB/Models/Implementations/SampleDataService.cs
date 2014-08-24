@@ -29,10 +29,10 @@ namespace ShoppingListLIB.Models.Implementations
 
             Products = new List<Product>()
             {
-                new Product(0, 0, "Tejtermék", "Sajt", 325, 50, "dkg", DateTime.Parse("2014.05.08.")),
-                new Product(1, 0, "Hús", "Sonka", 200, 20, "dkg", DateTime.Parse("2014.07.23.")),
-                new Product(2, 1, "Tejtermék", "Tej", 179, 1, "L", DateTime.Parse("2014.06.09.")),
-                new Product(3, 1, "Édesség", "Mars", 299, 1, "db", DateTime.Parse("2014.08.01."))
+                //new Product(0, 0, "Tejtermék", "Sajt", 325, 50, "dkg", DateTime.Parse("2014.05.08.")),
+                //new Product(1, 0, "Hús", "Sonka", 200, 20, "dkg", DateTime.Parse("2014.07.23.")),
+                //new Product(2, 1, "Tejtermék", "Tej", 179, 1, "L", DateTime.Parse("2014.06.09.")),
+                //new Product(3, 1, "Édesség", "Mars", 299, 1, "db", DateTime.Parse("2014.08.01."))
             };
         }
 

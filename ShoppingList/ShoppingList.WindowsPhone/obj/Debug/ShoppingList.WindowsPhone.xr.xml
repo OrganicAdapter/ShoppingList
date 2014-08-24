@@ -6,8 +6,13 @@
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="Shops" />
     <RootPropertyPathName Name="IsAdding" />
+    <RootPropertyPathName Name="Sync" />
     <RootPropertyPathName Name="Add" />
     <RootPropertyPathName Name="Load" />
+    <RootPropertyPathName Name="Settings" />
+    <RootPropertyPathName Name="Cultures" />
+    <RootPropertyPathName Name="CultureSelected" />
+    <RootPropertyPathName Name="SelectedValue" />
     <RootPropertyPathName Name="DataContext" />
     <RootPropertyPathName Name="Open" />
     <RootPropertyPathName Name="Delete" />
@@ -20,25 +25,40 @@
     <RootPropertyPathName Name="MyGroupedProducts" />
     <RootPropertyPathName Name="GroupedProducts" />
     <RootPropertyPathName Name="IsCreatingProduct" />
-    <RootPropertyPathName Name="Decrease" />
-    <RootPropertyPathName Name="Increase" />
-    <RootPropertyPathName Name="Price" />
-    <RootPropertyPathName Name="Unit" />
-    <RootPropertyPathName Name="Quantity" />
-    <RootPropertyPathName Name="IsCompleted" />
+    <RootPropertyPathName Name="Pin" />
+    <RootPropertyPathName Name="SendEmail" />
+    <RootPropertyPathName Name="SendSms" />
+    <RootPropertyPathName Name="ClearList" />
+    <RootPropertyPathName Name="TotalDelete" />
+    <RootPropertyPathName Name="Edit" />
     <RootPropertyPathName Name="GroupName" />
-    <RootPropertyPathName Name="TotalPrice" />
+    <RootPropertyPathName Name="CollectionGroups" />
+    <RootPropertyPathName Name="Group" />
     <RootPropertyPathName Name="Main" />
     <RootPropertyPathName Name="Shop" />
+    <RootPropertyPathName Name="Unit" />
+    <RootPropertyPathName Name="UnitQuantity" />
+    <RootPropertyPathName Name="Price" />
+    <RootPropertyPathName Name="Decrease" />
+    <RootPropertyPathName Name="Quantity" />
+    <RootPropertyPathName Name="Increase" />
+    <RootPropertyPathName Name="IsCompleted" />
+    <RootPropertyPathName Name="TotalPrice" />
+    <RootPropertyPathName Name="NewCategory" />
+    <RootPropertyPathName Name="IsCreatingCategory" />
     <RootPropertyPathName Name="NewProduct" />
+    <RootPropertyPathName Name="AddCategory" />
+    <RootPropertyPathName Name="Categories" />
     <RootPropertyPathName Name="Category" />
-    <RootPropertyPathName Name="Edit" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
       <RootProperty Name="Resources" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.ResourceDictionary" />
+    <RootType FullName="Windows.UI.Xaml.ResourceDictionary">
+      <RootProperty Name="MergedDictionaries" />
+      <RootProperty Name="Source" />
+    </RootType>
     <RootType FullName="ShoppingList.Injection.InjectionManager" />
     <RootType FullName="UniversalExtensions.Converters.BooleanNegationConverter" />
     <RootType FullName="UniversalExtensions.Converters.BooleanVisibilityNegationConverter" />
@@ -59,20 +79,22 @@
       <RootProperty Name="Converter" />
       <RootProperty Name="ElementName" />
       <RootProperty Name="Mode" />
+      <RootProperty Name="Path" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.Tools.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
       <RootProperty Name="Visibility" />
+      <RootProperty Name="Background" />
       <RootProperty Name="PrimaryCommands" />
+      <RootProperty Name="SecondaryCommands" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
       <RootProperty Name="Icon" />
       <RootProperty Name="Command" />
       <RootProperty Name="CommandParameter" />
-      <RootProperty Name="Visibility" />
       <RootProperty Name="Foreground" />
       <RootProperty Name="Margin" />
-      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.Interactions.Core.EventTriggerBehavior">
       <RootProperty Name="EventName" />
@@ -86,23 +108,22 @@
       <RootProperty Name="Children" />
       <RootProperty Name="Width" />
       <RootProperty Name="Background" />
-      <RootProperty Name="ColumnDefinitions" />
       <RootProperty Name="RowDefinitions" />
-      <RootProperty Name="Margin" />
+      <RootProperty Name="ColumnDefinitions" />
       <RootProperty Name="Height" />
-      <RootMethod Name="GetColumn" />
-      <RootMethod Name="SetColumn" />
+      <RootProperty Name="Margin" />
       <RootMethod Name="GetRow" />
       <RootMethod Name="SetRow" />
       <RootMethod Name="GetColumnSpan" />
       <RootMethod Name="SetColumnSpan" />
-      <RootMethod Name="GetRowSpan" />
-      <RootMethod Name="SetRowSpan" />
+      <RootMethod Name="GetColumn" />
+      <RootMethod Name="SetColumn" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Primitives.Popup">
       <RootProperty Name="DataContext" />
       <RootProperty Name="IsOpen" />
       <RootProperty Name="Child" />
+      <RootProperty Name="Visibility" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Pivot">
       <RootProperty Name="IsEnabled" />
@@ -122,26 +143,60 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.PivotItem">
       <RootProperty Name="Content" />
+      <RootProperty Name="DataContext" />
+      <RootProperty Name="Header" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="BorderBrush" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="SelectedValue" />
+      <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ListBox">
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="ItemTemplate" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
+    <RootType FullName="Windows.UI.Xaml.Controls.Primitives.FlyoutBase">
+      <RootMethod Name="GetAttachedFlyout" />
+      <RootMethod Name="SetAttachedFlyout" />
+    </RootType>
+    <RootType FullName="ShoppingList.Implementations.OpenMenuFlyoutAction" />
+    <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyout">
+      <RootProperty Name="Items" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyoutItem">
+      <RootProperty Name="Command" />
+      <RootProperty Name="CommandParameter" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Viewbox">
       <RootProperty Name="Width" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Child" />
+      <RootProperty Name="MaxWidth" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
       <RootProperty Name="Height" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
+      <RootProperty Name="Width" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
       <RootProperty Name="Text" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="Foreground" />
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="InputScope" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Command" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="BorderBrush" />
       <RootProperty Name="Width" />
     </RootType>
     <RootType FullName="ShoppingList.MainPage" />
@@ -152,29 +207,29 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.SemanticZoom">
       <RootProperty Name="ZoomedInView" />
+      <RootProperty Name="ZoomedOutView" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ListView">
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="IsEnabled" />
       <RootProperty Name="ItemTemplate" />
       <RootProperty Name="GroupStyle" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.CheckBox">
-      <RootProperty Name="IsChecked" />
-      <RootProperty Name="Foreground" />
       <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Background" />
-      <RootProperty Name="Content" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Viewbox">
-      <RootProperty Name="Height" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Child" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalContentAlignment" />
+      <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="Background" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.GroupStyle">
       <RootProperty Name="HidesIfEmpty" />
       <RootProperty Name="HeaderTemplate" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.CheckBox">
+      <RootProperty Name="IsChecked" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Content" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="Orientation" />
@@ -183,7 +238,11 @@
     <RootType FullName="Windows.UI.Xaml.Controls.AutoSuggestBox">
       <RootProperty Name="Text" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="Foreground" />
     </RootType>
     <RootType FullName="ShoppingList.Products" />
+    <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
+      <RootProperty Name="Color" />
+    </RootType>
   </Roots.RootTypes>
 </Roots>

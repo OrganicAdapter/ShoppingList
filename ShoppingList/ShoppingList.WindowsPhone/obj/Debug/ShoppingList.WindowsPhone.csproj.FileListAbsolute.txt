@@ -128,3 +128,16 @@ e:\GitHub\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\qualifie
 e:\GitHub\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\MultipleQualifiersPerDimensionFound.txt
 e:\GitHub\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\GalaSoft.MvvmLight.Platform.pri.xml
 e:\GitHub\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\ProjectArchitectures.txt
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\bin\Debug\Resources\MainDictionary.xbf
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Resources\MainDictionary.g.i.cs
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Resources\MainDictionary.g.cs
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Resources\MainDictionary.xaml
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Resources\MainDictionary.xbf
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Microsoft.Practices.ServiceLocation\layout.resfiles
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Microsoft.Practices.ServiceLocation\layout.resfiles.intermediate
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Microsoft.Practices.ServiceLocation\Resources.resfiles
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Microsoft.Practices.ServiceLocation\Resources.resfiles.intermediate
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Microsoft.Practices.ServiceLocation\pri.resfiles
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Microsoft.Practices.ServiceLocation\pri.resfiles.intermediate
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Microsoft.Practices.ServiceLocation\priconfig.xml
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.WindowsPhone\obj\Debug\Microsoft.Practices.ServiceLocation\priconfig.xml.intermediate

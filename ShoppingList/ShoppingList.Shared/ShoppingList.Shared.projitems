@@ -15,11 +15,18 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Implementations\OpenMenuFlyoutAction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementations\TypeService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Injection\InjectionManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en-US\Resources.resw" />
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\hu-HU\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Resources\MainDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>

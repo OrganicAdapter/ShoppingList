@@ -34,22 +34,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
-  </ItemGroup>
-  <ItemGroup>
     <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
     <TargetPlatform Include="Windows, Version=8.1" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Data\Category.cs" />
     <Compile Include="Models\Data\Product.cs" />
     <Compile Include="Models\Data\Shop.cs" />
+    <Compile Include="Models\Implementations\ApiService.cs" />
     <Compile Include="Models\Implementations\SampleDataService.cs" />
     <Compile Include="Models\Implementations\StorageService.cs" />
+    <Compile Include="Models\Interfaces\IApiService.cs" />
+    <Compile Include="Models\Interfaces\IChatService.cs" />
     <Compile Include="Models\Interfaces\IDataService.cs" />
     <Compile Include="Models\Interfaces\IStorageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ProductsViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ShopsViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
   </ItemGroup>
@@ -58,6 +60,14 @@
       <Project>{94688a06-7ad1-4537-adb0-79306e3d8f00}</Project>
       <Name>UniversalExtensions</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

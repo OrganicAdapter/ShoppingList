@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,19 +14,21 @@ namespace ShoppingListLIB.Models.Data
     {
         public int ProductID { get; set; }
         public int ShopID { get; set; }
-        
-        private string _category;
-        public string Category
+
+        private Category _category;
+        public Category Category
         {
             get { return _category; }
-            set { _category = value.ToUpper(); }
+            set { _category = value; RaisePropertyChanged(); }
         }
+
+        public int CategoryId { get { return Category.CategoryId; } }
         
         private string _name;
         public string Name
         {
             get { return _name; }
-            set { _name = value.ToLower(); }
+            set { _name = value.ToLower().Trim(); }
         }
 
         public double Price { get; set; }
@@ -34,16 +37,17 @@ namespace ShoppingListLIB.Models.Data
         public string Unit
         {
             get { return _unit; }
-            set { _unit = value.ToLower(); }
+            set { _unit = value.ToLower().Trim(); }
         }
 
         private double _quantity;
+        [JsonIgnore]
         public double Quantity
         {
             get { return _quantity; }
             set
             {
-                if (value < 1)
+                if (value <= 1)
                     _quantity = 1;
                 else if (value > 999)
                     _quantity = 999;
@@ -54,12 +58,31 @@ namespace ShoppingListLIB.Models.Data
             }
         }
 
-        public DateTime Date { get; set; }
-        public bool IsCompleted { get; set; }
+        private double _unitQuantity;
+        public double UnitQuantity
+        {
+            get { return _unitQuantity; }
+            set
+            {
+                if (value <= 0)
+                    _unitQuantity = 1;
+                else if (value > 999)
+                    _unitQuantity = 999;
+                else
+                    _unitQuantity = value;
 
+                RaisePropertyChanged();
+            }
+        }
+
+        public bool IsCompleted { get; set; }
+        public bool IsEnabled { get; set; }
+        public string Date { get; set; }
+
+        [JsonIgnore]
         public string Key
         {
-            get { return Category; }
+            get { return Category.Name; }
         }
 
 
@@ -72,17 +95,18 @@ namespace ShoppingListLIB.Models.Data
         {
             ProductID = -1;
             ShopID = shopID;
-            Category = "";
+            Category = new Category(shopID);
             Name = "";
             Price = 0;
             Unit = "";
             Quantity = 1;
-            Date = DateTime.Now;
-
+            UnitQuantity = 1;
+            Date = DateTime.Now.ToString();
+            IsEnabled = false;
             IsCompleted = false;
         }
 
-        public Product(int productID, int shopID, string category, string name, double price, int quantity, string unit, DateTime date)
+        public Product(int productID, int shopID, Category category, string name, double price, int quantity, string unit, string date)
         {
             ProductID = productID;
             ShopID = shopID;
@@ -91,8 +115,9 @@ namespace ShoppingListLIB.Models.Data
             Price = price;
             Unit = unit;
             Quantity = quantity;
+            UnitQuantity = 1;
             Date = date;
-
+            IsEnabled = false;
             IsCompleted = false;
         }
 

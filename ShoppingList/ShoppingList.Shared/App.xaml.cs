@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+using System.Globalization;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
@@ -38,6 +39,9 @@ namespace ShoppingList
         /// </summary>
         public App()
         {
+            //CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("hu-HU");
+            //Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "hu-HU";
+
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
 

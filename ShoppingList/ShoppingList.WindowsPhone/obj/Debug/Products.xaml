@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"  xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Flyout="using:ShoppingList.Implementations"
     mc:Ignorable="d"
     Background="White"
     DataContext="{Binding Products, Source={StaticResource Locator}}"
@@ -23,14 +24,25 @@
     </Page.Resources>
 
     <Page.BottomAppBar>
-        <CommandBar Visibility="{Binding IsCreatingProduct, Converter={StaticResource BooleanVisibilityNegationConverter}}">
+        <CommandBar Visibility="{Binding IsCreatingProduct, Converter={StaticResource BooleanVisibilityNegationConverter}}"
+                    Background="{StaticResource GreenBrush}">
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Uid="SendSms"
+                              Command="{Binding SendSms}"/>
+                <AppBarButton x:Uid="SendEmail"
+                              Command="{Binding SendEmail}"/>
+                <AppBarButton x:Uid="Pin"
+                              Command="{Binding Pin}"/>
+            </CommandBar.SecondaryCommands>
             <AppBarButton x:Uid="Add"
                           Icon="Add" 
                           Command="{Binding Add}" />
-            <AppBarButton x:Uid="Accept"
-                          Icon="Accept" 
-                          Command="{Binding Cancel}"
-                          Visibility="{Binding IsAdding, Converter={StaticResource BooleanVisibilityConverter}}" />
+            <AppBarButton x:Uid="Sync"
+                          Icon="Sync" 
+                          Command="{Binding Sync}" />
+            <AppBarButton x:Uid="ClearList"
+                          Command="{Binding ClearList}" 
+                          Icon="Clear" />
         </CommandBar>
     </Page.BottomAppBar>
 
@@ -41,81 +53,11 @@
     </Interactivity:Interaction.Behaviors>
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-        <Popup IsOpen="{Binding DataContext.IsAdding, ElementName=Page}"
-               Grid.Row="0" Grid.RowSpan="3">
-            <Grid Width="360" Height="550"
-                  Margin="20"
-                  Background="White">
-                <SemanticZoom>
-                    <SemanticZoom.ZoomedInView>
-                        <ListView ItemsSource="{Binding Source={StaticResource ProductsGrouped}}"
-                                  IsEnabled="{Binding IsCreatingProduct, Converter={StaticResource BooleanNegationConverter}}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid Width="300">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-
-                                        <TextBlock Grid.Column="0"
-                                                   Text="{Binding Name}" 
-                                                   Foreground="Black"
-                                                   FontSize="23"
-                                                   Margin="10,5,10,5">
-                                            <Interactivity:Interaction.Behaviors>
-                                                <Core:EventTriggerBehavior EventName="Tapped">
-                                                    <Core:InvokeCommandAction Command="{Binding DataContext.Save, ElementName=Page}" CommandParameter="{Binding}" />
-                                                </Core:EventTriggerBehavior>
-                                            </Interactivity:Interaction.Behaviors>
-                                        </TextBlock>
-
-                                        <AppBarButton Grid.Column="1"
-                                                      Icon="Edit"
-                                                      Command="{Binding DataContext.Edit, ElementName=Page}" CommandParameter="{Binding}"
-                                                      Foreground="Black"
-                                                      Margin="-10"/>
-                                        <AppBarButton Grid.Column="2"
-                                                      Icon="Delete"
-                                                      Command="{Binding DataContext.Delete, ElementName=Page}" CommandParameter="{Binding}"
-                                                      Foreground="Black"
-                                                      Margin="-10"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                            <ListView.GroupStyle>
-                                <GroupStyle HidesIfEmpty="True">
-                                    <GroupStyle.HeaderTemplate>
-                                        <DataTemplate>
-                                            <Grid Background="{StaticResource PhoneAccentBrush}"
-                                                  Width="400" Height="40">
-                                                <Viewbox HorizontalAlignment="Left">
-                                                    <TextBlock Text="{Binding GroupName}"
-                                                               Foreground="White"/>
-                                                </Viewbox>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </GroupStyle.HeaderTemplate>
-                                </GroupStyle>
-                            </ListView.GroupStyle>
-                        </ListView>
-                    </SemanticZoom.ZoomedInView>
-                </SemanticZoom>
-            </Grid>
-        </Popup>
-
         <Popup DataContext="{Binding NewProduct}"
                IsOpen="{Binding DataContext.IsCreatingProduct, ElementName=Page}"
-               Grid.Row="0" Grid.RowSpan="3">
+               Visibility="{Binding DataContext.IsCreatingCategory, ElementName=Page, Converter={StaticResource BooleanVisibilityNegationConverter}}">
             <Grid Width="400"
-                  Background="{StaticResource PhoneAccentBrush}">
+                  Background="{StaticResource GreenBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -131,170 +73,392 @@
                 <AutoSuggestBox x:Uid="ProductName"
                                 Grid.Row="0" Grid.ColumnSpan="2"
                                 Text="{Binding Name, Mode=TwoWay}"
-                                Margin="10"/>
-                <AutoSuggestBox x:Uid="ProductCategory"
-                                Grid.Row="1" Grid.ColumnSpan="2"
-                                Text="{Binding Category, Mode=TwoWay}"
-                                Margin="10"/>
+                                Margin="10"
+                                Foreground="{StaticResource BlueBrush}"/>
+                <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <ComboBox Grid.Column="0"
+                              ItemsSource="{Binding DataContext.Categories, ElementName=Page}"
+                              SelectedValue="{Binding Category, Mode=TwoWay}"
+                              Margin="10">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <AppBarButton x:Uid="Category"
+                                  Grid.Column="1"
+                                  Icon="Add"
+                                  Command="{Binding DataContext.AddCategory, ElementName=Page}"
+                                  Foreground="White"/>
+                </Grid>
 
                 <TextBox PlaceholderText="ProductPrice"
                          Grid.Row="2" Grid.Column="0"
                          Text="{Binding Price, Mode=TwoWay}"
                          InputScope="Number"
-                         Margin="10" />
+                         Margin="10"
+                         Foreground="{StaticResource BlueBrush}"/>
                 <TextBlock x:Uid="Currency"
                            Grid.Row="2" Grid.Column="1"
                            Margin="10"
                            FontSize="30"
-                           VerticalAlignment="Center" />
+                           VerticalAlignment="Center"
+                           Foreground="White"/>
                 <TextBox x:Uid="ProductQuantity"
                          Grid.Row="3" Grid.Column="0"
-                         Text="{Binding Quantity, Mode=TwoWay}"
+                         Text="{Binding UnitQuantity, Mode=TwoWay}"
                          InputScope="Number"
-                         Margin="10"/>
+                         Margin="10"
+                         Foreground="{StaticResource BlueBrush}"/>
                 <TextBox x:Uid="ProductUnit"
                          Grid.Row="3" Grid.Column="1"
                          Text="{Binding Unit, Mode=TwoWay}"
-                         Margin="10" />
+                         Margin="10"
+                         Foreground="{StaticResource BlueBrush}"/>
 
                 <Button x:Uid="New" 
                         Grid.Row="4" Grid.Column="0"
                         Command="{Binding DataContext.Save, ElementName=Page}"
                         HorizontalAlignment="Center"
-                        Width="180"/>
+                        Width="180"
+                        Foreground="White" BorderBrush="White"/>
                 <Button x:Uid="Cancel"
                         Grid.Row="4" Grid.Column="1"
                         Command="{Binding DataContext.Cancel, ElementName=Page}"
                         HorizontalAlignment="Center"
-                        Width="180" />
+                        Width="180"
+                        Foreground="White" BorderBrush="White"/>
             </Grid>
         </Popup>
 
-        <TextBlock Grid.Row="0"
-                   Text="{Binding Main.Shop.Name}"
-                   Foreground="{StaticResource PhoneAccentBrush}"
-                   FontSize="40"
-                   Margin="30,10,30,10"/>
+        <Popup DataContext="{Binding NewCategory}"
+               IsOpen="{Binding DataContext.IsCreatingCategory, ElementName=Page}">
+            <Grid Background="{StaticResource GreenBrush}"
+                  Width="400">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="1"
-              Margin="30, 10, 30, 20">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
+                <TextBox Grid.Row="0" Grid.ColumnSpan="2"
+                         Text="{Binding Name, Mode=TwoWay}"
+                         Margin="20,30,20,10"
+                         Foreground="{StaticResource BlueBrush}"/>
+                <Button x:Uid="New" 
+                        Grid.Row="1" Grid.Column="0"
+                        Command="{Binding DataContext.Save, ElementName=Page}"
+                        HorizontalAlignment="Center"
+                        Foreground="White" BorderBrush="White"/>
+                <Button x:Uid="Cancel"
+                        Grid.Row="1" Grid.Column="1"
+                        Command="{Binding DataContext.Cancel, ElementName=Page}"
+                        HorizontalAlignment="Center"
+                        Foreground="White" BorderBrush="White"/>
+            </Grid>
+        </Popup>
 
-            <Viewbox Grid.Column="0"
-                     Height="30"
-                     HorizontalAlignment="Left">
-                <TextBlock x:Uid="TotalPrice"
-                           Foreground="{StaticResource PhoneAccentBrush}"
-                           FontWeight="ExtraBold"/>
-            </Viewbox>
-            <Viewbox Grid.Column="1"
-                     Height="30" Width="100"
-                     HorizontalAlignment="Left">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{Binding TotalPrice}"
-                               Foreground="{StaticResource PhoneAccentBrush}"
-                               Margin="20,0,0,0"/>
-                    <TextBlock x:Uid="Currency"
-                               Foreground="{StaticResource PhoneAccentBrush}"/>
-                </StackPanel>
-            </Viewbox>
-        </Grid>
+        <Pivot>
+            <Pivot.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}"
+                               Foreground="{StaticResource GreenBrush}"
+                               FontSize="30"
+                               Margin="0,0,50,0"
+                               FontWeight="ExtraBold"/>
+                </DataTemplate>
+            </Pivot.HeaderTemplate>
+            <PivotItem Header="{Binding Main.Shop.Name}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0"
+                          Margin="0, 0, 0, 20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
 
-        <SemanticZoom Grid.Row="2">
-            <SemanticZoom.ZoomedInView>
-                <ListView ItemsSource="{Binding Source={StaticResource MyProductsGrouped}}"
-                          IsEnabled="{Binding IsCreatingProduct, Converter={StaticResource BooleanNegationConverter}}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Background="White"
-                                  Width="390">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
+                        <Viewbox Grid.Column="0"
+                                 Height="30"
+                                 HorizontalAlignment="Left">
+                            <TextBlock x:Uid="TotalPrice"
+                                       Foreground="{StaticResource GreenBrush}"
+                                       FontWeight="ExtraBold"/>
+                        </Viewbox>
+                        <Viewbox Grid.Column="1"
+                                 Height="30" Width="100"
+                                 HorizontalAlignment="Left">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding TotalPrice}"
+                                           Foreground="{StaticResource GreenBrush}"
+                                           Margin="20,0,0,0"/>
+                                <TextBlock x:Uid="Currency"
+                                           Foreground="{StaticResource GreenBrush}"/>
+                            </StackPanel>
+                        </Viewbox>
+                    </Grid>
 
-                                <CheckBox Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
-                                          IsChecked="{Binding IsCompleted}"
-                                          Foreground="Black"
-                                          VerticalAlignment="Center"
-                                          Background="Black">
-                                    <CheckBox.Content>
-                                        <Viewbox Width="80" Height="30">
-                                            <TextBlock Text="{Binding Name}" />
-                                        </Viewbox>
-                                    </CheckBox.Content>
-                                </CheckBox>
+                    <SemanticZoom Grid.Row="1">
+                        <SemanticZoom.ZoomedInView>
+                            <ListView ItemsSource="{Binding Source={StaticResource MyProductsGrouped}}"
+                                      IsEnabled="{Binding IsCreatingProduct, Converter={StaticResource BooleanNegationConverter}}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Background="{StaticResource BlueBrush}"
+                                              Width="350"
+                                              Margin="5">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
 
-                                <Viewbox Grid.Column="1" Grid.Row="0"
-                                         Height="30" Width="40">
-                                    <TextBlock Text="{Binding Quantity}"
-                                               Foreground="Black" />
-                                </Viewbox>
-                                <Viewbox Grid.Column="2" Grid.Row="0"
-                                         Height="30" Width="20">
-                                    <TextBlock Text="{Binding Unit}"
-                                               Foreground="Black" />
-                                </Viewbox>
+                                            <Interactivity:Interaction.Behaviors>
+                                                <Core:EventTriggerBehavior EventName="Holding">
+                                                    <Flyout:OpenMenuFlyoutAction />
+                                                </Core:EventTriggerBehavior>
+                                            </Interactivity:Interaction.Behaviors>
+                                            
+                                            <FlyoutBase.AttachedFlyout>
+                                                <MenuFlyout>
+                                                    <MenuFlyoutItem x:Uid="Remove" Command="{Binding DataContext.Delete, ElementName=Page}" CommandParameter="{Binding}" />
+                                                </MenuFlyout>
+                                            </FlyoutBase.AttachedFlyout>
+                                            
+                                            <CheckBox Grid.Column="0" Grid.Row="0"
+                                                      IsChecked="{Binding IsCompleted}"
+                                                      VerticalAlignment="Center"
+                                                      Background="{StaticResource GreenBrush}"
+                                                      Margin="10,0,0,0">
+                                                <CheckBox.Content>
+                                                    <Viewbox Width="80" Height="30">
+                                                        <TextBlock Text="{Binding Name}"
+                                                                   Foreground="White"/>
+                                                    </Viewbox>
+                                                </CheckBox.Content>
+                                            </CheckBox>
 
-                                <Viewbox Grid.Column="1" Grid.Row="1"
-                                         Height="30" Width="40">
-                                    <TextBlock Text="{Binding Price}"
-                                               Foreground="Black" />
-                                </Viewbox>
-                                <Viewbox Grid.Column="2" Grid.Row="1"
-                                         Height="30" Width="20">
-                                    <TextBlock x:Uid="Currency"
-                                               Foreground="Black" />
-                                </Viewbox> 
-                                
-                                <AppBarButton Grid.Column="4" 
-                                              Icon="Add"
-                                              Command="{Binding DataContext.Increase, ElementName=Page}" CommandParameter="{Binding}"
-                                              Foreground="Black"
-                                              Margin="-10, -10, -10, -20"/>
-                                <AppBarButton Grid.Column="5" 
-                                              Icon="Remove"
-                                              Command="{Binding DataContext.Decrease, ElementName=Page}" CommandParameter="{Binding}"
-                                              Foreground="Black"
-                                              Margin="-10, -10, -10, -20"/>
-                                <AppBarButton Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="1" 
-                                              Icon="Delete"
-                                              Command="{Binding DataContext.Delete, ElementName=Page}" CommandParameter="{Binding}"
-                                              Foreground="Black"
-                                              Margin="-10, -10, -10, -20"
-                                              HorizontalAlignment="Center"/>
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                    <ListView.GroupStyle>
-                        <GroupStyle HidesIfEmpty="True">
-                            <GroupStyle.HeaderTemplate>
-                                <DataTemplate>
-                                    <Grid Background="{StaticResource PhoneAccentBrush}"
-                                          Width="400" Height="40">
-                                        <Viewbox HorizontalAlignment="Left">
-                                            <TextBlock Text="{Binding GroupName}"
-                                                       Foreground="White"/>
-                                        </Viewbox>
-                                    </Grid>
-                                </DataTemplate>
-                            </GroupStyle.HeaderTemplate>
-                        </GroupStyle>
-                    </ListView.GroupStyle>
-                </ListView>
-            </SemanticZoom.ZoomedInView>
-        </SemanticZoom>
+                                            <AppBarButton Grid.Column="2" 
+                                                          Icon="Add"
+                                                          Command="{Binding DataContext.Increase, ElementName=Page}" CommandParameter="{Binding}"
+                                                          Foreground="White"
+                                                          Margin="0,0,-10,-20" />
+
+                                            <Viewbox Grid.Column="3" Grid.Row="0"
+                                                     Height="30" Width="40">
+                                                <TextBlock Text="{Binding Quantity}"
+                                                           Foreground="White" />
+                                            </Viewbox>
+
+                                            <AppBarButton Grid.Column="4" 
+                                                          Icon="Remove"
+                                                          Command="{Binding DataContext.Decrease, ElementName=Page}" CommandParameter="{Binding}"
+                                                          Foreground="White"
+                                                          Margin="-10,0,0,-20" />
+                                            
+                                            <Grid Grid.Row="1" Grid.ColumnSpan="6">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock x:Uid="Price"
+                                                       Grid.Row="1" Grid.Column="0" 
+                                                       Foreground="White"
+                                                       FontSize="25"
+                                                       Margin="10,0,0,0"/>
+
+                                                <Viewbox Grid.Column="2" Grid.Row="1"
+                                                     Height="30" MaxWidth="40">
+                                                    <TextBlock Text="{Binding Price}"
+                                                           Foreground="White" />
+                                                </Viewbox>
+                                                <Viewbox Grid.Column="3" Grid.Row="1"
+                                                     Height="30" MaxWidth="40">
+                                                    <TextBlock x:Uid="Currency"
+                                                           Foreground="White" />
+                                                </Viewbox>
+                                                <Viewbox Grid.Column="4" Grid.Row="1"
+                                                     Height="30" MaxWidth="20">
+                                                    <TextBlock Text="/"
+                                                           Foreground="White" />
+                                                </Viewbox>
+                                                <Viewbox Grid.Column="5" Grid.Row="1"
+                                                     Height="30" MaxWidth="40">
+                                                    <TextBlock Text="{Binding UnitQuantity}"
+                                                           Foreground="White" />
+                                                </Viewbox>
+                                                <Viewbox Grid.Column="6" Grid.Row="1"
+                                                     Height="30" MaxWidth="40"
+                                                         Margin="0,0,20,0">
+                                                    <TextBlock Text="{Binding Unit}"
+                                                           Foreground="White" />
+                                                </Viewbox>
+                                            </Grid>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                                <ListView.GroupStyle>
+                                    <GroupStyle HidesIfEmpty="True">
+                                        <GroupStyle.HeaderTemplate>
+                                            <DataTemplate>
+                                                <Grid Background="{StaticResource GreenBrush}"
+                                                      Width="350" Height="40"
+                                                      Margin="5">
+                                                    <Viewbox HorizontalAlignment="Left"
+                                                             Margin="5">
+                                                        <TextBlock Text="{Binding GroupName}"
+                                                                   Foreground="White"/>
+                                                    </Viewbox>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </GroupStyle.HeaderTemplate>
+                                    </GroupStyle>
+                                </ListView.GroupStyle>
+                            </ListView>
+                        </SemanticZoom.ZoomedInView>
+                        <SemanticZoom.ZoomedOutView>
+                            <ListView ItemsSource="{Binding Source={StaticResource MyProductsGrouped}, Path=CollectionGroups}"
+                                      VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                                      VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                      Background="White">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Background="{StaticResource GreenBrush}"
+                                              Width="400" Height="40"
+                                              Margin="5">
+                                            <Viewbox HorizontalAlignment="Left">
+                                                <TextBlock Text="{Binding Group.GroupName}"
+                                                           Foreground="White"/>
+                                            </Viewbox>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </SemanticZoom.ZoomedOutView>
+                    </SemanticZoom>
+                </Grid>
+            </PivotItem>
+            <PivotItem x:Uid="Shelf">
+                <Grid Width="360" Height="550"
+                      Background="White">
+                    <SemanticZoom>
+                        <SemanticZoom.ZoomedInView>
+                            <ListView ItemsSource="{Binding Source={StaticResource ProductsGrouped}}"
+                                      IsEnabled="{Binding IsCreatingProduct, Converter={StaticResource BooleanNegationConverter}}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Width="300"
+                                              Background="{StaticResource BlueBrush}"
+                                              Margin="5">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Interactivity:Interaction.Behaviors>
+                                                <Core:EventTriggerBehavior EventName="Holding">
+                                                    <Flyout:OpenMenuFlyoutAction />
+                                                </Core:EventTriggerBehavior>
+                                            </Interactivity:Interaction.Behaviors>
+
+                                            <FlyoutBase.AttachedFlyout>
+                                                <MenuFlyout>
+                                                    <MenuFlyoutItem x:Uid="Remove" Command="{Binding DataContext.TotalDelete, ElementName=Page}" CommandParameter="{Binding}" />
+                                                </MenuFlyout>
+                                            </FlyoutBase.AttachedFlyout>
+
+                                            <Viewbox Grid.Column="0"
+                                                     MaxWidth="200" Height="50"
+                                                     HorizontalAlignment="Left">
+                                                <Interactivity:Interaction.Behaviors>
+                                                    <Core:EventTriggerBehavior EventName="Tapped">
+                                                        <Core:InvokeCommandAction Command="{Binding DataContext.Save, ElementName=Page}" CommandParameter="{Binding}" />
+                                                    </Core:EventTriggerBehavior>
+                                                </Interactivity:Interaction.Behaviors>
+                                                <TextBlock Text="{Binding Name}" 
+                                                       Foreground="White"
+                                                       FontSize="23"
+                                                       Margin="10,5,10,5"
+                                                       VerticalAlignment="Center" />
+
+                                            </Viewbox>
+
+                                            <AppBarButton Grid.Column="1"
+                                                          Icon="Edit"
+                                                          Command="{Binding DataContext.Edit, ElementName=Page}" CommandParameter="{Binding}"
+                                                          Foreground="White"
+                                                          Margin="0,0,0,-10"
+                                                          VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                                <ListView.GroupStyle>
+                                    <GroupStyle HidesIfEmpty="True">
+                                        <GroupStyle.HeaderTemplate>
+                                            <DataTemplate>
+                                                <Grid Background="{StaticResource GreenBrush}"
+                                                      Width="300" Height="40"
+                                                      Margin="5">
+                                                    <Viewbox HorizontalAlignment="Left"
+                                                             Margin="5">
+                                                        <TextBlock Text="{Binding GroupName}"
+                                                                   Foreground="White"/>
+                                                    </Viewbox>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </GroupStyle.HeaderTemplate>
+                                    </GroupStyle>
+                                </ListView.GroupStyle>
+                            </ListView>
+                        </SemanticZoom.ZoomedInView>
+                        <SemanticZoom.ZoomedOutView>
+                            <ListView ItemsSource="{Binding Source={StaticResource ProductsGrouped}, Path=CollectionGroups}"
+                                      VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                                      VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                      Background="White">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Background="{StaticResource GreenBrush}"
+                                              Width="400" Height="40"
+                                              Margin="5">
+                                            <Viewbox HorizontalAlignment="Left">
+                                                <TextBlock Text="{Binding Group.GroupName}"
+                                                           Foreground="White"/>
+                                            </Viewbox>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </SemanticZoom.ZoomedOutView>
+                    </SemanticZoom>
+                </Grid>
+            </PivotItem>
+        </Pivot>
     </Grid>
 </Page>
 

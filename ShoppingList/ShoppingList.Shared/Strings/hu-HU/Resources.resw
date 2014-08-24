@@ -117,14 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Accept.Label" xml:space="preserve">
-    <value>Elfogadás</value>
-  </data>
   <data name="Add.Label" xml:space="preserve">
     <value>Új</value>
   </data>
   <data name="Cancel.Content" xml:space="preserve">
     <value>Mégse</value>
+  </data>
+  <data name="Category.Label" xml:space="preserve">
+    <value>Új kategória</value>
+  </data>
+  <data name="ClearList.Label" xml:space="preserve">
+    <value>Lista ürítése</value>
   </data>
   <data name="Currency.Text" xml:space="preserve">
     <value>HUF</value>
@@ -132,11 +135,11 @@
   <data name="New.Content" xml:space="preserve">
     <value>Hozzáadás</value>
   </data>
-  <data name="NewProduct.Text" xml:space="preserve">
-    <value>Új termék</value>
+  <data name="Pin.Label" xml:space="preserve">
+    <value>Kitűzés a kezdőképernyőre</value>
   </data>
-  <data name="ProductCategory.PlaceholderText" xml:space="preserve">
-    <value>Kategória</value>
+  <data name="Price.Text" xml:space="preserve">
+    <value>Ár:</value>
   </data>
   <data name="ProductName.PlaceholderText" xml:space="preserve">
     <value>Név</value>
@@ -148,15 +151,33 @@
     <value>Mennyiség</value>
   </data>
   <data name="ProductUnit.PlaceholderText" xml:space="preserve">
-    <value>Mértékegység</value>
+    <value>Egység</value>
+  </data>
+  <data name="Remove.Text" xml:space="preserve">
+    <value>Törlés</value>
+  </data>
+  <data name="SendEmail.Label" xml:space="preserve">
+    <value>Küldés E-mail-ben</value>
+  </data>
+  <data name="SendSms.Label" xml:space="preserve">
+    <value>Küldés SMS-ben</value>
   </data>
   <data name="Settings.Header" xml:space="preserve">
     <value>Beállítások</value>
   </data>
+  <data name="Shelf.Header" xml:space="preserve">
+    <value>Polc</value>
+  </data>
   <data name="Shops.Header" xml:space="preserve">
     <value>Boltok</value>
   </data>
+  <data name="Sync.Label" xml:space="preserve">
+    <value>Szinkronizálás</value>
+  </data>
+  <data name="SyncShops.Label" xml:space="preserve">
+    <value>Szinkronizálás</value>
+  </data>
   <data name="TotalPrice.Text" xml:space="preserve">
-    <value>Összesen</value>
+    <value>Összesen:</value>
   </data>
 </root>
