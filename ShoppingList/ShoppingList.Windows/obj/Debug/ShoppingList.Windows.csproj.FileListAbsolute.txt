@@ -126,3 +126,7 @@ e:\GitHub\ShoppingList\ShoppingList\ShoppingList.Windows\obj\Debug\MultipleQuali
 e:\GitHub\ShoppingList\ShoppingList\ShoppingList.Windows\obj\Debug\GalaSoft.MvvmLight.pri.xml
 e:\GitHub\ShoppingList\ShoppingList\ShoppingList.Windows\obj\Debug\GalaSoft.MvvmLight.Extras.pri.xml
 e:\GitHub\ShoppingList\ShoppingList\ShoppingList.Windows\obj\Debug\ProjectArchitectures.txt
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.Windows\obj\Debug\Resources\MainDictionary.g.i.cs
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.Windows\obj\Debug\Resources\MainDictionary.g.cs
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.Windows\obj\Debug\Resources\MainDictionary.xaml
+d:\SoftIT\ShoppingList\ShoppingList\ShoppingList.Windows\obj\Debug\Resources\MainDictionary.xbf

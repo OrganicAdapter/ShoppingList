@@ -924,3 +924,4 @@ namespace ShoppingList.ShoppingList_WindowsPhone_XamlTypeInfo
 }
 
 
+

@@ -18,7 +18,6 @@ namespace ShoppingListLIB.Models.Data
             set { _name = value.ToUpper().Trim(); }
         }
 
-
         private string _culture;
         public string Culture
         {

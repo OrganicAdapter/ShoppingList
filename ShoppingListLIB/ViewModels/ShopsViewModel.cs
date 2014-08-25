@@ -105,24 +105,25 @@ namespace ShoppingListLIB.ViewModels
 
         private void ExecuteAdd()
         {
-            var id = Shops.Count;
-            id = SetShopId(id);
+            var id = SetShopId();
 
             NewShop = new Shop(id, CultureInfo.CurrentCulture.ToString());
             IsAdding = true;
         }
 
-        private int SetShopId(int id)
+        private int SetShopId()
         {
+            var maxId = 0;
+
             foreach (var shop in Shops)
             {
-                if (shop.ShopID == id)
+                if (shop.ShopID >= maxId)
                 {
-                    SetShopId(id++);
+                    maxId = shop.ShopID;
                 }
             }
 
-            return id;
+            return maxId + 1;
         }
 
         private void ExecuteSave()
